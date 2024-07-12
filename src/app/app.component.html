@@ -1,2 +1,10 @@
-<app-header></app-header>
-<app-students></app-students>
+
+<button mat-flat-button>Hola</button>
+
+<div *ngFor="let student of students">
+  <p>{{ student | fullName }}</p>
+</div>
+
+<h1 appTitleSize>Este es un título de tamaño 20px</h1>
+<h2 appTitleSize>Este es un subtítulo de tamaño 20px</h2>
+<p appTitleSize>Este es un párrafo con tamaño de letra 20px</p>
