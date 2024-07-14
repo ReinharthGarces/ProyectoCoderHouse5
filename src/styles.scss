@@ -1,2 +1,6 @@
-// @import "./app/scss/utils";
+@import "./scss/variables";
+@import "../node_modules/bootstrap/scss/bootstrap";
 
+body {
+  margin: 0;
+}

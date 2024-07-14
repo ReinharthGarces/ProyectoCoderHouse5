@@ -6,9 +6,4 @@ import { Component } from '@angular/core';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  students = [
-    { firstName: 'John', lastName: 'Doe' },
-    { firstName: 'Jane', lastName: 'Smith' },
-    // Otros estudiantes
-  ];
 }

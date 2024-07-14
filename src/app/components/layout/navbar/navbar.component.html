@@ -1,1 +1,29 @@
-<p>navbar works!</p>
+<mat-drawer-container class="sidenav-container" autosize>
+  <mat-drawer #drawer class="sidenav" mode="side">
+    <mat-nav-list>
+      <a mat-list-item href="...">Students</a>
+      <a mat-list-item href="...">Courses</a>
+      <a mat-list-item href="...">Classes</a>
+    </mat-nav-list>
+  </mat-drawer>
+
+
+  <div class="sidenav-content">
+    <mat-toolbar>
+      <button
+        (click)="drawer.toggle()"
+        mat-icon-button
+        class="menu-icon"
+      >
+        <mat-icon>menu</mat-icon>
+      </button>
+    <span class="tittle">CoderHouse</span>
+  </mat-toolbar>
+
+  <main class="p-5">
+    <app-student-list></app-student-list>
+  </main>
+  </div>
+</mat-drawer-container>
+
+

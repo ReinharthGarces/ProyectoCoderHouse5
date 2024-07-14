@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { StudentService } from '../../services/student.service';
+import { Component, Output, EventEmitter, Inject } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Student } from '../../models/student.model';
 
 @Component({
@@ -9,27 +10,31 @@ import { Student } from '../../models/student.model';
 })
 
 export class StudentFormComponent {
-  student: Student = { id: 0, firstName: '', lastName: '', email: '' };
-  isEdit = false;
+  @Output() studentAdded = new EventEmitter<Student>();
+  studentForm: FormGroup;
 
-  constructor(private studentService: StudentService) { }
+  constructor(
+    private fb: FormBuilder,
+    // private matDialogRef: MatDialogRef<StudentFormComponent>,
+    // @Inject(MAT_DIALOG_DATA) public editingStudent?: Student
+  ) {
+    this.studentForm = this.fb.group({
+      id: [''],
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]]
+    });
 
-  addOrUpdateStudent(): void {
-    if (this.isEdit) {
-      this.studentService.updateStudent(this.student);
-    } else {
-      this.studentService.addStudent({ ...this.student, id: Date.now() });
+    // if (this.editingStudent) {
+    //   this.studentForm.patchValue(this.editingStudent);
+    // }
+  }
+
+
+  onSubmit(): void {
+    if (this.studentForm.valid) {
+      this.studentAdded.emit(this.studentForm.value);
+      this.studentForm.reset();
     }
-    this.resetForm();
-  }
-
-  resetForm(): void {
-    this.student = { id: 0, firstName: '', lastName: '', email: '' };
-    this.isEdit = false;
-  }
-
-  editStudent(student: Student): void {
-    this.student = { ...student };
-    this.isEdit = true;
   }
 }
