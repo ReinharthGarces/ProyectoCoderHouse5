@@ -1,6 +1,7 @@
 import { Component} from '@angular/core';
 import { Student } from '../../models/student.model';
 import { MatDialog } from '@angular/material/dialog';
+import { StudentFormComponent } from '../student-form/student-form.component';
 
 @Component({
   selector: 'app-student-list',
@@ -9,7 +10,7 @@ import { MatDialog } from '@angular/material/dialog';
 })
 
 export class StudentListComponent  {
-  constructor(private dialog: MatDialog) {}
+  constructor(public dialog: MatDialog) {}
   students: Student[] = [
     {
       id: 1,
@@ -49,34 +50,46 @@ export class StudentListComponent  {
   isEditing: boolean = false;
   selectedStudent: Student | null = null;
 
+  openDialog(student?: Student): void {
+    const dialogRef = this.dialog.open(StudentFormComponent, {
+      data:student || {}
+    });
 
-  addStudent(student: Student) {
-    if (this.isEditing) {
-      const index = this.students.findIndex(s => s.id === student.id);
-      if (index !== -1) {
-        this.students[index] = student;
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      if (result) {
+        debugger
+        if (!student) {
+          this.addStudent(result);
+        } else {
+          this.isEditing = true;
+          this.editStudent(result)
+        }
       }
-    } else {
-      const maxId = this.students.length > 0 ? Math.max(...this.students.map(s => s.id)) : 0;
-      student.id = maxId + 1;
-      this.students.push(student);
-    }
+    });
+  }
+  
+  addStudent(student: Student) {
+    const maxId = this.students.length > 0 ? Math.max(...this.students.map(s => s.id)) : 0;
+    student.id = maxId + 1;
+    this.students.push(student);
+
     this.dataSource = [...this.students]; 
     this.showForm = false; 
     this.isEditing = false;
     this.selectedStudent = null;
   }
 
-  toggleForm() {
-    this.showForm = !this.showForm;
-    this.isEditing = false;
-    this.selectedStudent = null;
-  }
-
   editStudent(student: Student) {
+    const index = this.students.findIndex(s => s.id === student.id);
+    if (index !== -1) {
+    this.students[index] = student;
+
+    this.dataSource = [...this.students]; 
     this.selectedStudent = student;
     this.isEditing = true;
     this.showForm = true;
+    }
   }
 
   deleteStudent(student: Student) {

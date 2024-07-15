@@ -8,26 +8,31 @@
         <input matInput formControlName="firstName">
         <mat-error *ngIf="studentForm.get('firstName')?.invalid">First Name is required</mat-error>
       </mat-form-field>
-
+  
       <mat-form-field>
         <mat-label>Last Name</mat-label>
         <input matInput formControlName="lastName">
         <mat-error *ngIf="studentForm.get('lastName')?.invalid">Last Name is required</mat-error>
       </mat-form-field>
-
+  
       <mat-form-field>
         <mat-label>Email</mat-label>
         <input matInput formControlName="email">
         <mat-error *ngIf="studentForm.get('email')?.invalid">Valid Email is required</mat-error>
       </mat-form-field>
-
+  
       <mat-dialog-actions>
         <button mat-raised-button (click)="onSubmit()" type="submit" [disabled]="studentForm.invalid">
           {{ isEditing ? 'Save Changes' : 'Save' }}
         </button>
+        <button mat-raised-button (click)="onCancel()" type="button">
+          {{ isEditing ? 'Cancel Changes' : 'Cancel' }}
+        </button>
       </mat-dialog-actions>    
     </form>
   </mat-dialog-content>
+  
+
 
 
 

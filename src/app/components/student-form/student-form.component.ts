@@ -1,5 +1,6 @@
-import { Component, Input, Inject, Output, EventEmitter, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import { Component, EventEmitter, Inject, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Student } from '../../models/student.model';
 
 @Component({
@@ -7,40 +8,41 @@ import { Student } from '../../models/student.model';
   templateUrl: './student-form.component.html',
   styleUrl: './student-form.component.scss'
 })
-
-export class StudentFormComponent implements OnInit, OnChanges {
-  @Input() student: Student | null = null;
-  @Input() isEditing: boolean = false;
+export class StudentFormComponent implements OnInit {
   @Output() studentAdded = new EventEmitter<Student>();
-  @Output() formClosed = new EventEmitter<void>();
   studentForm: FormGroup;
+  isEditing: boolean;
+  student: Student | null = null;
 
   constructor(
-    private fb: FormBuilder ) {
+    private fb: FormBuilder,
+    private dialogRef: MatDialogRef<StudentFormComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: Student
+  ) {
+    this.isEditing = !!data?.id;
     this.studentForm = this.fb.group({
-      id: [''],
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]]
+      id: [data?.id || ''],
+      firstName: [data?.firstName || '', Validators.required],
+      lastName: [data?.lastName || '', Validators.required],
+      email: [data?.email || '', [Validators.required, Validators.email]],
     });
   }
 
   ngOnInit(): void {
-    if (this.student) {
+    console.log(this.data)
+      if (this.student) {
       this.studentForm.patchValue(this.student);
     }
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes['student'] && this.student) {
-      this.studentForm.patchValue(this.student);
-    }
-  }
-
-  onSubmit(): void {
+  onSubmit() {
     if (this.studentForm.valid) {
       this.studentAdded.emit(this.studentForm.value);
-      this.studentForm.reset();
+      this.dialogRef.close(this.studentForm.value);
     }
+  }
+
+  onCancel() {
+    this.dialogRef.close();
   }
 }
