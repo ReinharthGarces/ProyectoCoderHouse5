@@ -56,7 +56,6 @@ export class StudentListComponent  {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
       if (result) {
         debugger
         if (!student) {
@@ -88,7 +87,6 @@ export class StudentListComponent  {
     this.dataSource = [...this.students]; 
     this.selectedStudent = student;
     this.isEditing = true;
-    this.showForm = true;
     }
   }
 

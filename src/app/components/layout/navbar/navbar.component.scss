@@ -1,3 +1,5 @@
+@import '../../../../scss/variables';
+
 //sidenav
 .sidenav-container {
   width: 100vw;
@@ -6,17 +8,20 @@
 }
 .sidenav-content {
   height: 100%;
-
 }
 .sidenav {
   padding: 20px;
   width: 200px;
   border-radius: 0;
 }
+a:hover{
+  background-color: $primary-color;
+}
+
 
 //toolbar
 .mat-toolbar {
-  background-color:darkolivegreen;
+  background-color:$primary-color;
   display: flex;
   padding: 3%;
 }
@@ -25,3 +30,6 @@
   font-size:xx-large;
 }
 
+.menu-icon:hover {
+  background-color: $secundary-color;
+}
