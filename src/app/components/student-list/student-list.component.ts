@@ -93,8 +93,13 @@ export class StudentListComponent  {
   deleteStudent(student: Student) {
     const index = this.students.findIndex(s => s.id === student.id);
     if (index !== -1) {
-      this.students.splice(index, 1);
-      this.dataSource = [...this.students];
+      if (confirm('¿Está seguro de que desea eliminar este estudiante?')) {
+        this.students.splice(index, 1);
+        this.dataSource = [...this.students];
+        console.log('Estudiante eliminado:', student);
+      } else {
+        console.log('Eliminación cancelada por el usuario.');
+      }
     }
   }
 }

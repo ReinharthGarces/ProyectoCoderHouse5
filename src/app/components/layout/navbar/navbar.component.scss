@@ -4,10 +4,7 @@
 .sidenav-container {
   width: 100vw;
   height: 100vh;
-  background-color: antiquewhite;
-}
-.sidenav-content {
-  height: 100%;
+  background-color: rgb(216, 195, 164);
 }
 .sidenav {
   padding: 20px;
@@ -20,6 +17,9 @@ a:hover{
 
 
 //toolbar
+.toolbar-content {
+  height: 100%;
+}
 .mat-toolbar {
   background-color:$primary-color;
   display: flex;
