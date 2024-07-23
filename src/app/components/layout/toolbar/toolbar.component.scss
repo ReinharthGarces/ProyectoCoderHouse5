@@ -1,0 +1,15 @@
+@import '../../../../scss/variables';
+
+.mat-toolbar {
+  background-color:$primary-color;
+  display: flex;
+  padding: 3%;
+}
+.tittle {
+  margin-left: 1%;
+  font-size:xx-large;
+}
+
+.menu-icon:hover {
+  background-color: $secundary-color;
+}
