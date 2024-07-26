@@ -14,6 +14,7 @@ import { MatTableModule } from '@angular/material/table';
 import {MatListModule} from '@angular/material/list';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import {MatTabsModule} from '@angular/material/tabs';
 
 
 const materialComponents = [
@@ -31,7 +32,8 @@ const materialComponents = [
   MatTableModule,
   MatListModule,
   MatPaginatorModule,
-  MatSortModule
+  MatSortModule,
+  MatTabsModule
 ];
 
 @NgModule({

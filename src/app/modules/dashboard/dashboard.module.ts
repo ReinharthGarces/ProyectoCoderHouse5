@@ -5,26 +5,28 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ToolbarComponent } from '../../components/layout/toolbar/toolbar.component';
 import { SidenavComponent } from '../../components/layout/sidenav/sidenav.component';
 import { MaterialModule } from '../material/material.module';
-import { StudentListComponent } from '../../components/student-list/student-list.component';
-import { StudentFormComponent } from '../../components/student-form/student-form.component';
-import { FullNamePipe } from '../../pipes/full-name.pipe';
-import { AppTitleSizeDirective } from '../../directives/app-title-size.directive';
+import { StudentsListComponent } from '../../components/students/students-list/students-list.component';
+import { StudentsFormComponent } from '../../components/students/students-form/students-form.component';
+import { FullNamePipe } from '../../shared/pipes/full-name.pipe';
+import { AppTitleSizeDirective } from '../../shared/directives/app-title-size.directive';
 import { DashboardRoutingModule } from './dashboard-routing.module';
+import { ClassesComponent } from '../../components/classes/classes.component';
 
 
 @NgModule({
   declarations: [
     ToolbarComponent,
     SidenavComponent,
-    StudentListComponent,
-    StudentFormComponent,
+    StudentsListComponent,
+    StudentsFormComponent,
+    ClassesComponent,
     FullNamePipe,
     AppTitleSizeDirective
   ],
   exports: [
     ToolbarComponent,
     SidenavComponent,
-    StudentListComponent,
+    StudentsListComponent,
   ],
   imports: [
     CommonModule,

@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ToolbarComponent } from '../../components/layout/toolbar/toolbar.component';
+// import { ToolbarComponent } from '../../components/layout/toolbar/toolbar.component';
 
 const routes: Routes = [
-  { path: 'toolbar', 
-    component: ToolbarComponent
-  }
+  // { path: 'toolbar', 
+  //   component: ToolbarComponent
+  // }
 ];
 
 @NgModule({

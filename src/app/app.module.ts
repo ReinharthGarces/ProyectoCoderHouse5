@@ -7,11 +7,13 @@ import { FormsModule } from '@angular/forms';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { MaterialModule } from './modules/material/material.module';
 import { provideNativeDateAdapter } from '@angular/material/core';
+import { CoursesComponent } from './components/courses/courses.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    CoursesComponent,
   ],
   imports: [
     BrowserModule,

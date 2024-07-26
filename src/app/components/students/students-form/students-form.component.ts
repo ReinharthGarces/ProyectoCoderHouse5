@@ -1,14 +1,14 @@
 import { Component, EventEmitter, Inject, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { Student } from '../../models/student.model';
+import { Student } from '../../../models/student.model';
 
 @Component({
-  selector: 'app-student-form',
-  templateUrl: './student-form.component.html',
-  styleUrl: './student-form.component.scss'
+  selector: 'app-students-form',
+  templateUrl: './students-form.component.html',
+  styleUrl: './students-form.component.scss'
 })
-export class StudentFormComponent implements OnInit {
+export class StudentsFormComponent implements OnInit {
   @Output() studentAdded = new EventEmitter<Student>();
   studentForm: FormGroup;
   isEditing: boolean;
@@ -16,7 +16,7 @@ export class StudentFormComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private dialogRef: MatDialogRef<StudentFormComponent>,
+    private dialogRef: MatDialogRef<StudentsFormComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Student
   ) {
     this.isEditing = !!data?.id;

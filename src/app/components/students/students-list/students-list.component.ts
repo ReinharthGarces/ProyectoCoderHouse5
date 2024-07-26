@@ -1,15 +1,15 @@
 import { Component} from '@angular/core';
-import { Student } from '../../models/student.model';
+import { Student } from '../../../models/student.model';
 import { MatDialog } from '@angular/material/dialog';
-import { StudentFormComponent } from '../student-form/student-form.component';
+import { StudentsFormComponent } from '../students-form/students-form.component';
 
 @Component({
-  selector: 'app-student-list',
-  templateUrl: './student-list.component.html',
-  styleUrl: './student-list.component.scss'
+  selector: 'app-students-list',
+  templateUrl: './students-list.component.html',
+  styleUrl: './students-list.component.scss'
 })
 
-export class StudentListComponent  {
+export class StudentsListComponent  {
   constructor(public dialog: MatDialog) {}
   students: Student[] = [
     {
@@ -51,13 +51,12 @@ export class StudentListComponent  {
   selectedStudent: Student | null = null;
 
   openDialog(student?: Student): void {
-    const dialogRef = this.dialog.open(StudentFormComponent, {
+    const dialogRef = this.dialog.open(StudentsFormComponent, {
       data:student || {}
     });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        debugger
         if (!student) {
           this.addStudent(result);
         } else {

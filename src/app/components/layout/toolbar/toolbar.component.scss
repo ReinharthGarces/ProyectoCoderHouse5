@@ -6,8 +6,10 @@
   padding: 3%;
 }
 .tittle {
-  margin-left: 1%;
+  font-family: $primary-title-font;
+  font-weight: 950;
   font-size:xx-large;
+  margin-left: 1%;
 }
 
 .menu-icon:hover {
