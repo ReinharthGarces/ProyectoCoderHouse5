@@ -1,5 +1,5 @@
 import { Component} from '@angular/core';
-import { Student } from '../../../models/student.model';
+import { Student } from '../models/student.model';
 import { MatDialog } from '@angular/material/dialog';
 import { StudentsFormComponent } from '../students-form/students-form.component';
 

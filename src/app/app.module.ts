@@ -1,19 +1,19 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
-import { DashboardModule } from './modules/dashboard/dashboard.module';
+import { DashboardModule } from './features/dashboard/dashboard.module';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { MaterialModule } from './modules/material/material.module';
+import { MaterialModule } from './core/material/material.module';
 import { provideNativeDateAdapter } from '@angular/material/core';
-import { CoursesComponent } from './components/courses/courses.component';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    CoursesComponent,
+
   ],
   imports: [
     BrowserModule,

@@ -1,13 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { SidenavComponent } from './components/layout/sidenav/sidenav.component';
-import { CoursesComponent } from './components/courses/courses.component';
-import { ClassesComponent } from './components/classes/classes.component';
+import { SidenavComponent } from './features/navbar/sidenav/sidenav.component';
+import { CoursesComponent } from './features/courses/courses.component';
+import { ClassesComponent } from './features/classes/classes.component';
+import { HomeComponent } from './features/home/home.component';
 
 const routes: Routes = [
-  // { path: 'home', 
-  //   component: SidenavComponent
-  // },
+  { path: 'home', 
+    component: HomeComponent
+  },
+  { path: 'students', 
+    component: SidenavComponent
+  },
   { path: 'courses', 
     component: CoursesComponent
   },

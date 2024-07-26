@@ -1,0 +1,45 @@
+.home-container {
+  text-align: center;
+  padding: 20px;
+}
+
+.section {
+  margin: 20px 0;
+}
+
+h1 {
+  font-size: 2.5em;
+  margin-bottom: 10px;
+}
+
+h2 {
+  font-size: 2em;
+  color: #007acc;
+}
+
+h3 {
+  font-size: 1.5em;
+  margin: 10px 0 5px;
+}
+
+p {
+  font-size: 1.1em;
+  color: #333;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  background: #f9f9f9;
+  margin: 10px 0;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+li:hover {
+  background: #f0f0f0;
+}
