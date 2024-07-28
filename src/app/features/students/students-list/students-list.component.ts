@@ -1,7 +1,9 @@
-import { Component} from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { Student } from '../models/student.model';
 import { MatDialog } from '@angular/material/dialog';
 import { StudentsFormComponent } from '../students-form/students-form.component';
+import { StudentsService } from '../../../core/services/student.service';
+
 
 @Component({
   selector: 'app-students-list',
@@ -9,46 +11,26 @@ import { StudentsFormComponent } from '../students-form/students-form.component'
   styleUrl: './students-list.component.scss'
 })
 
-export class StudentsListComponent  {
-  constructor(public dialog: MatDialog) {}
-  students: Student[] = [
-    {
-      id: 1,
-      firstName: 'John',
-      lastName: 'Doe',
-      email: 'john.doe@example.com'
-    },
-    {
-      id: 2,
-      firstName: 'Jane',
-      lastName: 'Smith',
-      email: 'jane.smith@example.com'
-    },
-    {
-      id: 3,
-      firstName: 'Samuel',
-      lastName: 'Green',
-      email: 'samuel.green@example.com'
-    },
-    {
-      id: 4,
-      firstName: 'Emily',
-      lastName: 'Brown',
-      email: 'emily.brown@example.com'
-    },
-    {
-      id: 5,
-      firstName: 'Michael',
-      lastName: 'Johnson',
-      email: 'michael.johnson@example.com',
-    }
-  ];
-
+export class StudentsListComponent implements OnInit{
+  constructor(
+  private studentsService: StudentsService,
+  private dialog: MatDialog) {}
+  students: Student[] = []
   dataSource = this.students;
   displayedColumns: string[] = ['id', 'fullName', 'email', 'actions'];
   showForm: boolean = false;
   isEditing: boolean = false;
   selectedStudent: Student | null = null;
+  
+  private updateDataSource(): void {
+    this.students = this.studentsService.getAllStudents();
+    this.dataSource = [...this.students];
+  }
+
+  ngOnInit(): void {
+    this.students = this.studentsService.getAllStudents();
+    this.dataSource = [...this.students];
+  }
 
   openDialog(student?: Student): void {
     const dialogRef = this.dialog.open(StudentsFormComponent, {
@@ -67,38 +49,24 @@ export class StudentsListComponent  {
     });
   }
   
-  addStudent(student: Student) {
-    const maxId = this.students.length > 0 ? Math.max(...this.students.map(s => s.id)) : 0;
-    student.id = maxId + 1;
-    this.students.push(student);
-
-    this.dataSource = [...this.students]; 
-    this.showForm = false; 
+  addStudent(student: Student): void {
+    this.studentsService.addStudent(student);
+    this.updateDataSource();
+    this.showForm = false;
     this.isEditing = false;
     this.selectedStudent = null;
   }
 
-  editStudent(student: Student) {
-    const index = this.students.findIndex(s => s.id === student.id);
-    if (index !== -1) {
-    this.students[index] = student;
-
-    this.dataSource = [...this.students]; 
+  editStudent(student: Student): void {
+    this.studentsService.editStudent(student);
+    this.updateDataSource();
     this.selectedStudent = student;
     this.isEditing = true;
-    }
   }
 
-  deleteStudent(student: Student) {
-    const index = this.students.findIndex(s => s.id === student.id);
-    if (index !== -1) {
-      if (confirm('¿Está seguro de que desea eliminar este estudiante?')) {
-        this.students.splice(index, 1);
-        this.dataSource = [...this.students];
-        console.log('Estudiante eliminado:', student);
-      } else {
-        console.log('Eliminación cancelada por el usuario.');
-      }
-    }
+  deleteStudent(student: Student): void {
+    this.studentsService.deleteStudent(student, () => {
+      this.updateDataSource();
+    });
   }
 }

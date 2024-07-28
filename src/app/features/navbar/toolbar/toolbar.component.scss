@@ -2,8 +2,9 @@
 
 .mat-toolbar {
   background-color:$primary-color;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
   display: flex;
-  padding: 3%;
+  padding: 4% 2%;
 }
 .tittle {
   text-decoration: none;
@@ -11,6 +12,7 @@
   font-family: $primary-title-font;
   font-weight: 950;
   font-size:xx-large;
+  text-shadow: $deeper-text;
   margin-left: 1%;
 }
 

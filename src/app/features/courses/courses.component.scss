@@ -10,9 +10,12 @@
 
 .course-content h2 {
   font-family: $primary-title-font;
+  cursor: pointer;
   font-weight: 600;
   color: $primary-color;
+  text-shadow: $deeper-text;
   margin-bottom: 2vh;
+  text-decoration: none;
 }
 
 .course-content p {

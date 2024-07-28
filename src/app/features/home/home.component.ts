@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
 })
 
 export class HomeComponent {
+  constructor() {}
   //Courses data
   title = 'Cursos de Frontend';
   heroTitle = 'Domina el Desarrollo Frontend';
@@ -15,18 +16,18 @@ export class HomeComponent {
   courses = [
     { 
       name: 'HTML para Principiantes',
-      image: 'assets/frameworks-img/angular.jpg',
+      image: '/frameworks-img/html.jpg',
       description: 'Aprende los fundamentos del HTML para construir páginas web.'
     },
     { 
       name: 'CSS Avanzado',
-      image: '/public/frameworks-img/react.jpg',
+      image: '/frameworks-img/css.jpg',
       description: 'Domina técnicas avanzadas de diseño y maquetación con CSS.'
     },
     { 
-      name: 'TypeScript desde Cero',
-      image: '/assets/frameworks-img/vue.jpg',
-      description: 'Descubre cómo TypeScript puede mejorar tu desarrollo frontend.'
+      name: 'JavaScript desde Cero',
+      image: '/frameworks-img/javaScript.png',
+      description: 'Descubre cómo JavaScript puede mejorar tu desarrollo frontend.'
     }
   ];
 
@@ -59,7 +60,5 @@ export class HomeComponent {
     }
   ];
   
-  constructor() { }
-
   ngOnInit(): void {}
 }

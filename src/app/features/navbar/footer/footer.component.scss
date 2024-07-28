@@ -8,6 +8,8 @@ mat-toolbar {
   display: flex;
   justify-content: space-between;
   background-color: $primary-color;
+  padding: 3% 2%;
+  box-shadow: 0 -3px 5px rgba(0, 0, 0, 0.2);
 }
 
 .social-links a {

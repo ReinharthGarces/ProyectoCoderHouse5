@@ -6,13 +6,26 @@ html, body {
   margin: 0;
 }
 
+main {
+  flex: 1;
+  padding: 20px; 
+}
+
 .main-container {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
 
-main {
-  flex: 1;
-  padding: 20px; 
+//Custom SweetAlert Globaly
+.confirm-toast {
+  background-color: $secondary-color !important;
+  color:wheat !important;
+  font-size: large !important;
+}
+
+.delete-toast {
+  background-color: $secondary-color !important;
+  color:wheat !important;
+  font-size: medium !important;
 }
