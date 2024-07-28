@@ -1,0 +1,25 @@
+@import '../../../../scss/variables';
+
+/* Footer */
+mat-toolbar {
+  width: auto;
+  height: 8vh;
+  margin-top: 5vh;
+  display: flex;
+  justify-content: space-between;
+  background-color: $primary-color;
+}
+
+.social-links a {
+  color: #fff;
+  margin: 0px 10px;
+  text-decoration: none;
+}
+
+.social-links a:hover {
+  background-color: $tertiary-color ;
+}
+
+span{
+  font-size:medium;
+}

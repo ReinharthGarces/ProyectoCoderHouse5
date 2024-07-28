@@ -9,18 +9,16 @@ import { MaterialModule } from './core/material/material.module';
 import { provideNativeDateAdapter } from '@angular/material/core';
 
 
-
 @NgModule({
   declarations: [
     AppComponent,
-
   ],
   imports: [
     BrowserModule,
+    DashboardModule,
     MaterialModule,
     AppRoutingModule,
-    FormsModule,
-    DashboardModule
+    FormsModule
   ],
   providers: [
     provideAnimationsAsync(),

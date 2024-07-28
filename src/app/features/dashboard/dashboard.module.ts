@@ -14,6 +14,7 @@ import { StudentsListComponent } from '../students/students-list/students-list.c
 import { ClassesComponent } from '../classes/classes.component';
 import { CoursesComponent } from '../courses/courses.component';
 import { DashboardComponent } from './dashboard.component';
+import { FooterComponent } from '../navbar/footer/footer.component';
 
 
 @NgModule({
@@ -27,12 +28,15 @@ import { DashboardComponent } from './dashboard.component';
     ClassesComponent,
     CoursesComponent,
     HomeComponent,
-    DashboardComponent
+    DashboardComponent,
+    FooterComponent
   ],
   exports: [
     ToolbarComponent,
     SidenavComponent,
+    FooterComponent,
     StudentsListComponent,
+    DashboardComponent
   ],
   imports: [
     CommonModule,

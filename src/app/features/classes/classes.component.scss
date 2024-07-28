@@ -1,0 +1,32 @@
+@import '../../../scss/variables';
+
+.class-card {
+  background-color: $secondary-color;
+  opacity: $my-opacity;
+  margin:5vh 15vw;
+}
+
+mat-card-header{
+  color: $primary-color;
+  justify-content: center;
+}
+
+mat-card-title{
+  font-family: $primary-title-font;
+  font-weight: 900;
+}
+
+p {
+  text-align: center;
+  font-size: larger;
+  font-weight: 500;
+}
+
+mat-list {
+  text-align: center;
+}
+
+strong {
+  color:antiquewhite;
+  font-size: medium;
+}

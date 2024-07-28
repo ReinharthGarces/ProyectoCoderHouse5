@@ -6,6 +6,8 @@
   padding: 3%;
 }
 .tittle {
+  text-decoration: none;
+  color: whitesmoke;
   font-family: $primary-title-font;
   font-weight: 950;
   font-size:xx-large;
@@ -13,5 +15,5 @@
 }
 
 .menu-icon:hover {
-  background-color: $secundary-color;
+  background-color: $secondary-color;
 }

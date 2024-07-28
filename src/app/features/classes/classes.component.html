@@ -1,1 +1,17 @@
-<p>classes works!</p>
+<mat-card *ngFor="let class of classes" class="class-card">
+  <mat-card-header appTitleSize>
+    <mat-card-title>{{ class.title }}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <p >{{ class.description }}</p>
+    <mat-list>
+      <mat-list-item *ngFor="let schedule of class.schedule">
+        <span matListItemLine><strong>{{ schedule.day }}: </strong>{{ schedule.time }}</span>
+        <span matListItemLine><strong>Profesor: </strong>{{ schedule.instructor }}</span>
+        <span matListItemLine><strong>Tema: </strong>{{ schedule.preview }}</span>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+</mat-card>
+
+

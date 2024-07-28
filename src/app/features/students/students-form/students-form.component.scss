@@ -1,10 +1,14 @@
 @import '../../../../scss/variables';
 
 mat-form-field {
-    margin: 2% 2%,
+  margin: 2% 2%,
 }
 
 h2 {
-    text-align: center;
-    background-color: $primary-color;
+  text-align: center;
+  background-color: $primary-color;
+}
+
+mat-error{
+  color: rgb(182, 63, 63);
 }

@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { SidenavComponent } from './features/navbar/sidenav/sidenav.component';
 import { CoursesComponent } from './features/courses/courses.component';
 import { ClassesComponent } from './features/classes/classes.component';
 import { HomeComponent } from './features/home/home.component';
+import { StudentsListComponent } from './features/students/students-list/students-list.component';
 
 const routes: Routes = [
   { path: 'home', 
     component: HomeComponent
   },
   { path: 'students', 
-    component: SidenavComponent
+    component: StudentsListComponent
   },
   { path: 'courses', 
     component: CoursesComponent

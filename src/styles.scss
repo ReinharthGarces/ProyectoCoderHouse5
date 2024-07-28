@@ -1,7 +1,18 @@
 @import "./scss/variables";
 @import "../node_modules/bootstrap/scss/bootstrap";
 
-body {
+html, body {
+  height: 100%;
   margin: 0;
 }
 
+.main-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+  padding: 20px; 
+}

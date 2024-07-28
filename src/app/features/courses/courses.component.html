@@ -1,6 +1,15 @@
-<mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
-  <mat-tab label="First">React</mat-tab>
-  <mat-tab label="Second">Angular</mat-tab>
-  <mat-tab label="Third">Vue</mat-tab>
-  <mat-tab label="fourth">Svelt</mat-tab>
-</mat-tab-group>
+<div class="courses-tabs">
+  <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
+    <mat-tab class="courses-label" *ngFor="let course of courses" [label]="course.title">
+      <ng-template matTabContent>
+        <div class="course-content">
+          <h2>{{ course.title }}</h2>
+          <p>{{ course.description }}</p>
+          <ul>
+            <li *ngFor="let topic of course.topics">{{ topic }}</li>
+          </ul>
+        </div>
+      </ng-template>
+    </mat-tab>
+  </mat-tab-group>
+</div>

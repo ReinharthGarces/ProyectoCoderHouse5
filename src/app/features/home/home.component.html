@@ -1,35 +1,36 @@
-<div class="home-container">
-  <h1>Welcome to Frontend Programming Courses</h1>
-  <p>Explore our courses, students, and classes below:</p>
-
-  <div class="section">
-    <h2>Courses</h2>
-    <ul>
-      <li *ngFor="let course of courses">
-        <h3>{{ course.name }}</h3>
-        <p>{{ course.description }}</p>
-      </li>
-    </ul>
+<!-- Hero Section -->
+<section class="hero">
+  <div class="hero-content">
+    <h1>{{ heroTitle }}</h1>
+    <p>{{ heroSubtitle }}</p>
+    <a mat-button routerLink="/courses">Explorar Cursos</a>
   </div>
+</section>
 
-  <div class="section">
-    <h2>Students</h2>
-    <ul>
-      <li *ngFor="let student of students">
-        <h3>{{ student.name }}</h3>
-        <p>Enrolled Courses: {{ student.enrolledCourses.join(', ') }}</p>
-      </li>
-    </ul>
+<!-- Courses Slider -->
+<section id="courses" class="courses-slider">
+  <h2>{{coursesTitle}}</h2>
+  <mat-card class="course-card" *ngFor="let course of courses">
+    <img mat-card-image [src]="course.image" [alt]="course.name">
+    <mat-card-content>
+      <h3>{{ course.name }}</h3>
+      <p>{{ course.description }}</p>
+    </mat-card-content>
+    <!-- <mat-card-actions>
+      <button mat-button>Register</button>
+    </mat-card-actions> -->
+  </mat-card>
+</section>
+
+<!-- Testimonials -->
+<section class="testimonials">
+  <h2>{{testimonialsTitle}}</h2>
+  <div class="testimonial-list">
+    <mat-card *ngFor="let testimonial of testimonials" class="testimonial">
+      <mat-card-content>
+          <p>"{{ testimonial.feedback }}"</p>
+          <footer appTitleSize>{{ testimonial.name }}</footer>
+      </mat-card-content>
+    </mat-card>
   </div>
-
-  <div class="section">
-    <h2>Classes</h2>
-    <ul>
-      <li *ngFor="let class of classes">
-        <h3>{{ class.name }}</h3>
-        <p>Schedule: {{ class.schedule }}</p>
-      </li>
-    </ul>
-  </div>
-</div>
-
+</section>
