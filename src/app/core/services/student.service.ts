@@ -1,13 +1,18 @@
 import { Injectable } from '@angular/core';
 import { Student } from '../../features/students/models/student.model';
 import { SwalService } from './swal.service';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class StudentsService {
-  constructor(private swalService: SwalService) {}
+  private studentsSubject: BehaviorSubject<Student[]> = new BehaviorSubject<Student[]>([]);
+  public students$: Observable<Student[]> = this.studentsSubject.asObservable();
+  constructor(private swalService: SwalService) {
+    this.dataSource()
+  }
   private students: Student[] = [
     {
       id: 1,
@@ -47,6 +52,10 @@ export class StudentsService {
     }
   ];
 
+  dataSource(): void {
+    this.studentsSubject.next(this.students);
+  }
+
   getAllStudents(): Student[] {
     return this.students;
   }
@@ -66,7 +75,7 @@ export class StudentsService {
     }
   }
 
-  deleteStudent(student: Student, callback: () => void): void {
+  deleteStudent(student: Student): void {
     const index = this.students.findIndex(s => s.id === student.id);
     if (index !== -1) {
       this.swalService.delete('¿Está seguro de que desea eliminar este estudiante?')
@@ -74,7 +83,7 @@ export class StudentsService {
           if (result.isConfirmed) {
             this.students.splice(index, 1);
             this.swalService.success('Estudiante eliminado');
-            callback();
+            this.dataSource();
           } else {
             console.log('Eliminación cancelada por el usuario.');
           }

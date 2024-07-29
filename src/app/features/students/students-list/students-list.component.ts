@@ -15,21 +15,26 @@ export class StudentsListComponent implements OnInit{
   constructor(
   private studentsService: StudentsService,
   private dialog: MatDialog) {}
-  students: Student[] = []
-  dataSource = this.students;
+  dataSource: Student[] = []
   displayedColumns: string[] = ['id', 'fullName', 'email', 'actions'];
   showForm: boolean = false;
   isEditing: boolean = false;
   selectedStudent: Student | null = null;
-  
-  private updateDataSource(): void {
-    this.students = this.studentsService.getAllStudents();
-    this.dataSource = [...this.students];
-  }
 
   ngOnInit(): void {
-    this.students = this.studentsService.getAllStudents();
-    this.dataSource = [...this.students];
+    this.updateDataSource();
+  }
+
+  
+  public deleteDataUpdate() {
+    this.studentsService.students$.subscribe (res => {
+      [...this.dataSource] = res
+    })
+  }
+
+  private updateDataSource(): void {
+    this.dataSource = this.studentsService.getAllStudents();
+    this.dataSource = [...this.dataSource];
   }
 
   openDialog(student?: Student): void {
@@ -65,8 +70,7 @@ export class StudentsListComponent implements OnInit{
   }
 
   deleteStudent(student: Student): void {
-    this.studentsService.deleteStudent(student, () => {
-      this.updateDataSource();
-    });
+    this.studentsService.deleteStudent(student)
+    this.deleteDataUpdate();
   }
 }

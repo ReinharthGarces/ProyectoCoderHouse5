@@ -30,7 +30,6 @@ export class StudentsFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.data)
       if (this.student) {
       this.studentForm.patchValue(this.student);
     }
