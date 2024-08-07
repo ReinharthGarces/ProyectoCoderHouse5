@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-// import { ToolbarComponent } from '../../components/layout/toolbar/toolbar.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
-  // { path: 'toolbar', 
-  //   component: ToolbarComponent
-  // }
+  { path: '',
+    component: LoginComponent
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class DashboardRoutingModule { }
+export class AuthRoutingModule { }

@@ -4,7 +4,6 @@ import { FormsModule } from '@angular/forms';
 import { MaterialModule } from '../../core/material/material.module';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { FullNamePipe } from '../../shared/pipes/full-name.pipe';
-import { AppTitleSizeDirective } from '../../shared/directives/app-title-size.directive';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from '../home/home.component';
 import { ToolbarComponent } from '../navbar/toolbar/toolbar.component';
@@ -15,6 +14,7 @@ import { ClassesComponent } from '../classes/classes.component';
 import { CoursesComponent } from '../courses/courses.component';
 import { DashboardComponent } from './dashboard.component';
 import { FooterComponent } from '../navbar/footer/footer.component';
+import { AppTitleSizeDirective } from '../../shared/directives/app-title-size.directive';
 
 
 @NgModule({
@@ -36,14 +36,14 @@ import { FooterComponent } from '../navbar/footer/footer.component';
     SidenavComponent,
     FooterComponent,
     StudentsListComponent,
-    DashboardComponent
+    DashboardComponent,
   ],
   imports: [
     CommonModule,
     DashboardRoutingModule,
     MaterialModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ]
 })
 export class DashboardModule { }

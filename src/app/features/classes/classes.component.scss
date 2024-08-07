@@ -4,6 +4,10 @@
   background-color: $secondary-color;
   opacity: $my-opacity;
   margin:5vh 15vw;
+  box-shadow: 3px 3px 6px rgba(0, 255, 255, 0.3), 
+  6px 6px 12px rgba(0, 255, 255, 0.2), 
+  9px 9px 18px rgba(0, 255, 255, 0.1);
+transition: box-shadow 0.3s ease-in-out;
 }
 
 mat-card-header{

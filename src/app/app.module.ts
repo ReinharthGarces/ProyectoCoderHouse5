@@ -1,12 +1,17 @@
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
-import { DashboardModule } from './features/dashboard/dashboard.module';
+import { DashboardModule } from './features/dashboard-module/dashboard.module';
 import { AppComponent } from './app.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { MaterialModule } from './core/material/material.module';
 import { provideNativeDateAdapter } from '@angular/material/core';
+import { provideHttpClient, withFetch } from '@angular/common/http';
+import { AuthModule } from './features/auth-module/auth.module';
+import { StoreModule } from '@ngrx/store';
+import { rootReducer } from './core/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 
 @NgModule({
@@ -18,11 +23,16 @@ import { provideNativeDateAdapter } from '@angular/material/core';
     DashboardModule,
     MaterialModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    AuthModule,
+    StoreModule.forRoot(rootReducer),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() })
   ],
   providers: [
     provideAnimationsAsync(),
-    provideNativeDateAdapter()
+    provideNativeDateAdapter(),
+    provideHttpClient(withFetch())
   ],
   bootstrap: [AppComponent]
 })
