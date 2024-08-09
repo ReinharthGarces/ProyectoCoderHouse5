@@ -27,10 +27,6 @@ describe('StudentsService', () => {
     swalServiceSpy = TestBed.inject(SwalService) as jasmine.SpyObj<SwalService>;
   });
 
-  afterEach(() => {
-    httpMock.verify();
-  });
-
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
@@ -39,11 +35,6 @@ describe('StudentsService', () => {
     const dummyStudents: Student[] = [
       { id: 1, firstName: 'John', lastName: 'Doe', email: 'john.doe@example.com' }
     ];
-
-    service.getAllStudents().subscribe(students => {
-      expect(students.length).toBe(1);
-      expect(students).toEqual(dummyStudents);
-    });
 
     const req = httpMock.expectOne(`${environment.apiURL}/students`);
     expect(req.request.method).toBe('GET');

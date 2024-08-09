@@ -1,4 +1,12 @@
 <!-- List of Students -->
+@if ( isLoading ) {
+  <div class="spinner-container">
+    <mat-spinner></mat-spinner>
+    <h4>Cargando alumnos...</h4>
+  </div>
+} 
+
+@else {
 <button mat-raised-button appTitleSize (click)="openDialog()">
   {{ showForm ? 'Cancel' : '+ Sign Up' }}
 </button>
@@ -37,3 +45,4 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
 </div>
+}

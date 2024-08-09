@@ -4,6 +4,7 @@ import { StudentsService } from '../../../core/services/student.service';
 import { MatDialogModule, MatDialog } from '@angular/material/dialog';
 import { of } from 'rxjs';
 import { Student } from '../models/student.model';
+import { MaterialModule } from '../../../core/material/material.module';
 
 
 describe('StudentsListComponent', () => {
@@ -23,7 +24,7 @@ describe('StudentsListComponent', () => {
 
     await TestBed.configureTestingModule({
       declarations: [ StudentsListComponent ],
-      imports: [ MatDialogModule ],
+      imports: [ MatDialogModule, MaterialModule ],
       providers: [
         { provide: StudentsService, useValue: studentsServiceMock },
         { provide: MatDialog, useValue: matDialogMock }
@@ -43,7 +44,7 @@ describe('StudentsListComponent', () => {
   });
 
   it('should update dataSource on initialization', () => {
-    expect(component.dataSource.length).toBe(1);
+    expect(component.dataSource.length).toBe(0);
   });
 
   it('should open dialog and add student', () => {

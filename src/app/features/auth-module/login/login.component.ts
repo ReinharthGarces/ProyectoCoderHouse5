@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../../core/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -9,28 +10,29 @@ import { AuthService } from '../../../core/services/auth.service';
 })
 export class LoginComponent {
   loginForm: FormGroup;
+  errorMessage: string | null = null;
 
   constructor(
-    public AuthService: AuthService,
-    private fb: FormBuilder) {
-      this.loginForm = this.fb.group({
-        email: ['', [Validators.required, Validators.email]],
-        password: ['', [Validators.required]],
-        role: ['', [Validators.required]]
-      });
-    }
+    private authService: AuthService,
+    private router: Router,
+    private fb: FormBuilder
+  ) {
+    this.loginForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required]],
+    });
+  }
 
   onSubmit() {
     if (this.loginForm.invalid) {
-      alert('El formulario no es valido');
-    } else {
-      const data = {
-        email: this.loginForm.get('email')?.value,
-        password: this.loginForm.get('password')?.value,
-      };
-      this.AuthService.login(data);
-      console.log(data)
+      alert('El formulario no es válido');
+      return;
     }
+    const data = {
+      email: this.loginForm.get('email')?.value,
+      password: this.loginForm.get('password')?.value,
+    };
+    this.authService.login(data);
   }
 
   onReset(): void {

@@ -40,8 +40,8 @@ import { AppTitleSizeDirective } from '../../shared/directives/app-title-size.di
   ],
   imports: [
     CommonModule,
-    DashboardRoutingModule,
     MaterialModule,
+    DashboardRoutingModule,
     FormsModule,
     ReactiveFormsModule,
   ]

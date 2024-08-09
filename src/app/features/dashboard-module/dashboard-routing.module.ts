@@ -4,6 +4,9 @@ import { ClassesComponent } from '../classes/classes.component';
 import { CoursesComponent } from '../courses/courses.component';
 import { StudentsListComponent } from '../students/students-list/students-list.component';
 import { HomeComponent } from '../home/home.component';
+import { authGuard } from '../../core/guards/auth.guard';
+import { professorGuard } from '../../core/guards/professor.guard';
+import { RegisterComponent } from '../auth-module/register/register.component';
 
 
 const routes: Routes = [
@@ -11,10 +14,11 @@ const routes: Routes = [
     component: HomeComponent
   },
   { path: 'students', 
-    // canActivate: [AuthGuard],
+    canActivate: [authGuard, professorGuard],
     component: StudentsListComponent
   },
   { path: 'courses', 
+    canActivate: [authGuard],
     component: CoursesComponent,
     // children: [
     //   {
@@ -24,8 +28,12 @@ const routes: Routes = [
     // ]
   },
   { path: 'classes', 
+    canActivate: [authGuard],
     component: ClassesComponent
   },
+  {path: 'register',
+    component: RegisterComponent
+  }
 ];
 
 @NgModule({

@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 import Swal from 'sweetalert2';
 
 @Injectable({
@@ -37,6 +38,8 @@ export class SwalService {
     }
   });
 
+  private notify$ = new Subject<string>();
+
 
   success(message: string): void {
     this.ConfirmSwal.fire({
@@ -48,6 +51,15 @@ export class SwalService {
   delete(message: string): Promise<any> {
     return this.DeleteSwal.fire({
       title: message,
+    });
+  }
+
+  sendNotification(txt: string) {
+    this.notify$.next(txt);
+    this.notify$.subscribe({
+      next: (message) => {
+        Swal.fire(message, '', 'info');
+      },
     });
   }
 }

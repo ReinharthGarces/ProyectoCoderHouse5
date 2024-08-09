@@ -17,6 +17,7 @@ export class StudentsListComponent implements OnInit {
   showForm: boolean = false;
   isEditing: boolean = false;
   selectedStudent: Student | null = null;
+  isLoading: boolean = true;
 
   constructor(
     private dialog: MatDialog,
@@ -28,9 +29,13 @@ export class StudentsListComponent implements OnInit {
   }
 
   private updateDataSource(): void {
-    this.studentsService.students$.subscribe(students => {
-      this.dataSource = students;
-    });
+    this.isLoading = true; 
+    setTimeout(() => {
+      this.studentsService.students$.subscribe(students => {
+        this.dataSource = students;
+        this.isLoading = false;
+      });
+    }, 1000);
   }
 
   openDialog(student?: Student): void {
