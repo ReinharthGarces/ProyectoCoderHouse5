@@ -58,4 +58,21 @@ export class AuthService {
     const userJson = localStorage.getItem('authUser');
     return userJson ? JSON.parse(userJson) : null;
   }
+
+  register(userData: User): void {
+    this.http.post<User>(this.apiURL, userData)
+      .subscribe({
+        next: (response) => {
+          console.log(response);
+          this.swalService.sendNotification('Usuario registrado exitosamente');
+          this.authUserSubject.next(response);
+          localStorage.setItem('authUser', JSON.stringify(response));
+          this.router.navigate(['home']);
+        },
+        error: (err) => {
+          console.error('Error al registrar usuario', err);
+          this.swalService.sendNotification('Error al registrar usuario');
+        },
+      });
+  }
 }
