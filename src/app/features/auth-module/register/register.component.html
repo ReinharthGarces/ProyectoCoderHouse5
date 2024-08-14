@@ -1,4 +1,4 @@
-<div class="register-container">
+<div class="register-container animate__animated animate__zoomIn" >
   <mat-card>
     <mat-card-header>
       <mat-card-title>Registro</mat-card-title>
@@ -45,8 +45,8 @@
         <mat-form-field appearance="outline" class="full-width">
           <mat-label>Role</mat-label>
           <mat-select formControlName="role"> 
-            <mat-option value="Professor">Professor</mat-option>
-            <mat-option value="Student">Student</mat-option>
+            <mat-option value="Professor">Profesor</mat-option>
+            <mat-option value="Student">Estudiante</mat-option>
           </mat-select>
           <mat-error *ngIf="registerForm.get('role')?.invalid && registerForm.get('role')?.touched">
             Seleccion un role

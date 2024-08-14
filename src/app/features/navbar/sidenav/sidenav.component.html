@@ -1,12 +1,12 @@
 <mat-drawer-container class="sidenav-container" autosize>
   <app-toolbar (drawerToggle)="onDrawerToggle()"></app-toolbar>
-  <mat-drawer #drawer class="sidenav" mode="side">
+  <mat-drawer #drawer class="sidenav" mode="side" (click)="onBackdropClick(drawer)">
     <mat-nav-list class="sidenav-list" appTitleSize>
       <a mat-list-item routerLink="/home">Inicio<mat-icon>home</mat-icon></a>
       <a *ngIf="(authUser$ | async)?.role === 'Professor'"mat-list-item routerLink="/students">Alumnos<mat-icon>group</mat-icon></a>
       <a mat-list-item routerLink="/courses">Cursos<mat-icon>library_books</mat-icon></a>
       <a mat-list-item routerLink="/classes">Clases<mat-icon>school</mat-icon></a>
-      <a (click)="logout()"mat-list-item routerLink="/login">Salir<mat-icon>close</mat-icon></a>
+      <a (click)="logout()"mat-list-item routerLink="/login">Cerrar sesion<mat-icon>close</mat-icon></a>
     </mat-nav-list>
   </mat-drawer>
 
@@ -15,4 +15,3 @@
   </main>
   <app-footer/>
 </mat-drawer-container>
-

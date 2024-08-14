@@ -52,11 +52,11 @@ export class HomeComponent {
     },
     {
       name: 'María Fernández',
-      feedback: 'He tomado varios cursos aquí y cada uno ha superado mis expectativas. La calidad del contenido es impresionante y los proyectos prácticos me han ayudado a mejorar mis habilidades.'
+      feedback: 'He tomado varios cursos aquí y cada uno ha superado mis expectativas. La calidad del contenido es impresionante y los proyectos prácticos me han ayudado a mejorar habilidades.'
     },
     {
       name: 'Pedro García',
-      feedback: 'Recomiendo estos cursos a cualquier persona que quiera aprender sobre desarrollo frontend. El soporte técnico es excelente y siempre están dispuestos a resolver cualquier problema rápidamente.'
+      feedback: 'Recomiendo estos cursos a cualquier persona que quiera aprender sobre desarrollo frontend. El soporte técnico es excelente y siempre están dispuestos a resolver cualquier problema.'
     }
   ];
   

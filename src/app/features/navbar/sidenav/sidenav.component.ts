@@ -20,6 +20,10 @@ export class SidenavComponent implements OnInit {
     this.drawer.toggle();
   }
 
+  onBackdropClick(drawer: any): void {
+    drawer.close(); // Cierra el sidenav
+  }
+
   logout() {
     this.authService.logout();
   }
