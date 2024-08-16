@@ -6,7 +6,6 @@ import { StudentsListComponent } from '../students/students-list/students-list.c
 import { HomeComponent } from '../home/home.component';
 import { authGuard } from '../../core/guards/auth.guard';
 import { professorGuard } from '../../core/guards/professor.guard';
-import { RegisterComponent } from '../auth-module/register/register.component';
 
 
 const routes: Routes = [
@@ -17,22 +16,20 @@ const routes: Routes = [
     canActivate: [authGuard, professorGuard],
     component: StudentsListComponent
   },
-  { path: 'courses', 
+  { 
+    path: 'courses', 
     canActivate: [authGuard],
     component: CoursesComponent,
-    // children: [
-    //   {
-    //     path: 'new',
-    //     component: newCoursesComponent
-    //   }
-    // ]
+    children: [
+      { 
+        path: 'courses/classes', 
+        component: ClassesComponent
+      }
+    ]
   },
   { path: 'classes', 
     canActivate: [authGuard],
     component: ClassesComponent
-  },
-  { path: 'register',
-    component: RegisterComponent
   }
 ];
 

@@ -43,7 +43,7 @@ export class AuthService {
       },
       error: (err) => {
         console.error('Error al iniciar sesión', err);
-        this.swalService.sendNotification('Error al iniciar sesión');
+        this.swalService.sendErrorNotification('Error al iniciar sesión');
       },
     });
   }
@@ -63,15 +63,14 @@ export class AuthService {
     this.http.post<User>(this.apiURL, userData)
       .subscribe({
         next: (response) => {
-          console.log(response);
-          this.swalService.sendNotification('Usuario registrado exitosamente');
+          this.swalService.sendSuccessNotification('Usuario registrado exitosamente');
           this.authUserSubject.next(response);
           localStorage.setItem('authUser', JSON.stringify(response));
           this.router.navigate(['home']);
         },
         error: (err) => {
           console.error('Error al registrar usuario', err);
-          this.swalService.sendNotification('Error al registrar usuario');
+          this.swalService.sendErrorNotification('Error al registrar usuario');
         },
       });
   }

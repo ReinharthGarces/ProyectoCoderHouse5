@@ -10,6 +10,7 @@ mat-toolbar {
   background: $secondary-gradient;
   padding: 3% 2%;
   box-shadow: 0 -3px 5px rgba(0, 0, 0, 0.2);
+  text-shadow: $deeper-text;
 }
 
 .social-links a {

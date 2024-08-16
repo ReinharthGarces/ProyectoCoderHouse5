@@ -1,0 +1,21 @@
+<div *ngIf="student" class="profile-container">
+  <mat-card class="profile-card">
+    <mat-card-header>
+      <div mat-card-avatar class="profile-avatar"></div>
+      <mat-card-title>{{ student.firstName }} {{ student.lastName }}</mat-card-title>
+      <mat-card-subtitle>{{ student.email }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="profile-details">
+        <h3>Información Personal</h3>
+        <p><strong>Nombre Completo:</strong> {{ student.firstName }} {{ student.lastName }}</p>
+        <p><strong>Email:</strong> {{ student.email }}</p>
+        <p><strong>Role:</strong> {{ student.role }}</p>
+      </div>
+    </mat-card-content>
+    <!-- <mat-card-actions>
+      <button mat-raised-button color="primary" (click)="editProfile(student.id)">Editar Perfil</button>
+      <button mat-raised-button color="warn" (click)="deleteProfile(student.id)">Eliminar Perfil</button>
+    </mat-card-actions> -->
+  </mat-card>
+</div>

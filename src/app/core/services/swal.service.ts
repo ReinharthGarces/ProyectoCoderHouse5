@@ -1,12 +1,16 @@
-import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Injectable, OnDestroy } from '@angular/core';
+import { Subject, Subscription } from 'rxjs';
 import Swal from 'sweetalert2';
 
 @Injectable({
   providedIn: 'root'
 })
-export class SwalService {
+export class SwalService implements OnDestroy{
   constructor() {}
+  private errorNotify$ = new Subject<string>();
+  private successNotify$ = new Subject<string>();
+  private errorNotifySubscription: Subscription | undefined;
+  private successNotifySubscription: Subscription | undefined;
 
   private ConfirmSwal= Swal.mixin({
     toast: true,
@@ -25,7 +29,7 @@ export class SwalService {
   
   private DeleteSwal = Swal.mixin({
     position: 'center',
-    width: '30vw',
+    width: '25vw',
     showConfirmButton: true,
     showCancelButton: true,
     icon: 'error',
@@ -38,9 +42,60 @@ export class SwalService {
     }
   });
 
-  private notify$ = new Subject<string>();
+  private logoutSwal = Swal.mixin({
+    width: '25vw',
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Sí, cerrar sesión',
+    cancelButtonText: 'Cancelar',
+    customClass: {
+      popup: 'notification-toast'
+    },
+    showClass: {
+      popup: `
+        animate__animated
+        animate__zoomIn
+        animate__faster`
+    }
+  });
 
+  private ErrorSwal = Swal.mixin({
+    position: 'center',
+    width: '25vw',
+    icon: 'error',
+    confirmButtonText: 'Volver',
+    confirmButtonColor: '#d33',
+    customClass: {
+      popup: 'notification-toast'
+    },
+    showClass: {
+      popup: `
+        animate__animated
+        animate__zoomIn
+        animate__faster`
+    }
+  });
 
+  private SuccessSwal = Swal.mixin({
+    position: 'center',
+    width: '25vw',
+    icon: 'success',
+    confirmButtonText: 'Volver',
+    confirmButtonColor: '#3085d6',
+    customClass: {
+      popup: 'notification-toast'
+    },
+    showClass: {
+      popup: `
+        animate__animated
+        animate__zoomIn
+        animate__faster`
+    }
+  });
+
+//Metodos
   success(message: string): void {
     this.ConfirmSwal.fire({
       icon: "success",
@@ -54,12 +109,45 @@ export class SwalService {
     });
   }
 
-  sendNotification(txt: string) {
-    this.notify$.next(txt);
-    this.notify$.subscribe({
-      next: (message) => {
-        Swal.fire(message, '', 'info');
-      },
+  logout(message: string): Promise<any> {
+    return this.logoutSwal.fire({
+      title: message,
     });
+  }
+  
+  sendErrorNotification(txt: string): void {
+    if (!this.errorNotifySubscription) {
+      this.errorNotifySubscription = this.errorNotify$.subscribe({
+        next: (message) => {
+          this.ErrorSwal.fire({
+            title: message,
+          });
+        },
+      });
+    }
+    this.errorNotify$.next(txt);
+  }
+
+  sendSuccessNotification(txt: string): void {
+    if (!this.successNotifySubscription) {
+      this.successNotifySubscription = this.successNotify$.subscribe({
+        next: (message) => {
+          this.SuccessSwal.fire({
+            title: message,
+          });
+        },
+      });
+    }
+    this.successNotify$.next(txt);
+  }
+
+  ngOnDestroy() {
+    if (this.errorNotifySubscription) {
+      this.errorNotifySubscription.unsubscribe();
+    }
+
+    if (this.successNotifySubscription) {
+      this.successNotifySubscription.unsubscribe();
+    }
   }
 }

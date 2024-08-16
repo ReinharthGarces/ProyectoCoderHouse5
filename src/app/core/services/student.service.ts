@@ -82,4 +82,10 @@ export class StudentsService {
     console.error('Ocurrio un error:', error);
     return throwError('Algo malo paso; porfavor intenta de nuevo mas tarde.');
   }
+
+  getStudentById(id: string): Observable<any> {
+    return this.http.get<any>(`${this.apiURL}/${id}`).pipe(
+      catchError(this.handleError)
+    );
+  }
 }
