@@ -1,3 +1,4 @@
 export const environment = {
-  apiURL: 'XXXXXXXXXXXXXXXXXXXXXXXXX',
+  envName: 'Produccion',
+  apiURl: 'https://www.my-real-api.com/api/v1',
 };

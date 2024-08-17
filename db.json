@@ -1,0 +1,361 @@
+{
+  "users": [
+    {
+      "id": "7531",
+      "firstName": "Miracle",
+      "lastName": "Kuvalis",
+      "email": "Domenica13@gmail.com",
+      "password": "WJ3D4SIUEEmkjZZ",
+      "role": "Professor",
+      "token": "rk5f1m8b9j0v4y7"
+    },
+    {
+      "id": "4892",
+      "firstName": "Eriberto",
+      "lastName": "Ledner",
+      "email": "Elnora51@hotmail.com",
+      "password": "Xd87s9SHNgfwHb1",
+      "role": "Student",
+      "token": "2h8j4k5p9n0r1t3"
+    },
+    {
+      "id": "3167",
+      "firstName": "Dessie",
+      "lastName": "Schulist",
+      "email": "Aurore.Fay@hotmail.com",
+      "password": "nJBwi2Sl7k7VWQ8",
+      "role": "Professor",
+      "token": "9s3k2t6n0r1m5z8"
+    },
+    {
+      "id": "2458",
+      "firstName": "Erik",
+      "lastName": "Stamm",
+      "email": "Clair.Schumm@gmail.com",
+      "password": "baOmitUNTIeGjms",
+      "role": "Professor",
+      "token": "4x9r8t6n0k3z5p1"
+    },
+    {
+      "id": "9304",
+      "firstName": "Darron",
+      "lastName": "Breitenberg",
+      "email": "Casandra12@gmail.com",
+      "password": "WpE9CeqOT9EupZk",
+      "role": "Student",
+      "token": "7m5p2r8n0k1t4z3"
+    },
+    {
+      "id": "6742",
+      "firstName": "Eden",
+      "lastName": "Price",
+      "email": "Kareem_Hand4@hotmail.com",
+      "password": "50k75UDjw2qt3jY",
+      "role": "Student",
+      "token": "3k8r5p1n0z6t2m4"
+    },
+    {
+      "id": "1389",
+      "firstName": "Shanel",
+      "lastName": "Kiehn",
+      "email": "Jillian33@yahoo.com",
+      "password": "MyrwnCJaKGSjY_I",
+      "role": "Student",
+      "token": "5n9r3t1k0z6p2m4"
+    },
+    {
+      "id": "5478",
+      "firstName": "Chadd",
+      "lastName": "Baumbach",
+      "email": "Eloise51@yahoo.com",
+      "password": "LRz8rBB9qBwdGGr",
+      "role": "Student",
+      "token": "6p1r4n9k0z2t5m3"
+    },
+    {
+      "id": "9203",
+      "firstName": "Haven",
+      "lastName": "Blick",
+      "email": "Daphney.Schmeler@gmail.com",
+      "password": "_bdO35cwU7hmrwZ",
+      "role": "Student",
+      "token": "4k5r8p1n0z3t2m6"
+    },
+    {
+      "id": "8125",
+      "firstName": "Sofia",
+      "lastName": "Zambo",
+      "email": "sofia@zambo",
+      "password": "sofiazambo",
+      "role": "Professor",
+      "token": "8t1p3r6k0z5m2n4"
+    },
+    {
+      "id": "3741",
+      "firstName": "Reinharth",
+      "lastName": "Garces",
+      "email": "reinharth_26@hotmail.com"
+    },
+    {
+      "id": "c7b1",
+      "firstName": "hola",
+      "lastName": "hola",
+      "email": "hola@hola",
+      "password": "hola",
+      "role": "Professor",
+      "token": "yl8uxjjrzsj"
+    },
+    {
+      "id": "6631",
+      "firstName": "ola",
+      "lastName": "ola",
+      "email": "ola@ola",
+      "password": "ola",
+      "role": "Professor",
+      "token": "jiw0fiyf2t9"
+    }
+  ],
+  "courses": [
+    {
+      "title": "HTML",
+      "description": "El lenguaje de marcado de hipertexto, Hypertext Markup Language o HTML es un lenguaje de programación que forma parte de la mayoría de las páginas web y aplicaciones en línea.",
+      "topics": [
+        "Desarrollo web",
+        "Elementos de bloque",
+        "Elementos en línea",
+        "Ventajas y desventajas de HTML",
+        "Cómo se relacionan HTML, CSS y JavaScript"
+      ],
+      "id": "93a6"
+    },
+    {
+      "title": "CSS",
+      "description": "CSS son las siglas en inglés de Cascading Style Sheets, que significa «hojas de estilo en cascada». Es un lenguaje que se usa para estilizar elementos escritos en un lenguaje de marcado como HTML.",
+      "topics": [
+        "La relación entre HTML y CSS",
+        "Estilos CSS interno, externo e inline",
+        "Ventajas de CSS",
+        "Las reglas de la estructura",
+        "Las posibilidades de personalización"
+      ],
+      "id": "4f9e"
+    },
+    {
+      "title": "JavaScript",
+      "description": "JavaScript es un lenguaje de programación ligero que los desarrolladores web suelen utilizar para crear interacciones más dinámicas al desarrollar páginas web, aplicaciones, servidores e incluso juegos.",
+      "topics": [
+        "ECMAScript",
+        "Aplicaciones web y móviles",
+        "Comportamiento interactivo en los sitios web",
+        "Construcción de servidores web y aplicaciones de servidor",
+        "¿En qué se diferencia de otros lenguajes de programación?"
+      ],
+      "id": "7d13"
+    },
+    {
+      "title": "React",
+      "description": "ReactJS es una de las librerías más populares de JavaScript para el desarrollo de aplicaciones móviles y web. Creada por Facebook, contiene una colección de fragmentos de código JS reutilizables utilizados para crear interfaces de usuario.",
+      "topics": [
+        "JSX",
+        "Virtual DOM",
+        "Componentes y Props",
+        "Gestión de Estado",
+        "Redux"
+      ],
+      "id": "c51b"
+    },
+    {
+      "title": "Angular",
+      "description": "Es un framework de ingeniería de software de código abierto que se utiliza para crear aplicaciones web de una sola página, es una creación de los ingenieros de Google, Misko Hevery y Adam Abrons.",
+      "topics": [
+        "Enlace bidireccional de datos",
+        "Estructura de código",
+        "Compatibilidad móvil y de escritorio",
+        "Directivas",
+        "Futuro brillante"
+      ],
+      "id": "7c9a"
+    }
+  ],
+  "classes": [
+    {
+      "title": "Clases de HTML",
+      "description": "Detalles y cronograma de las próximas clases de HTML",
+      "schedule": [
+        {
+          "day": "Lunes",
+          "time": "09:00 - 11:00",
+          "instructor": "Carmelo Anthony",
+          "preview": "Desarrollo web en el curso de HTML."
+        },
+        {
+          "day": "Martes",
+          "time": "10:00 - 12:00",
+          "instructor": "Khawi Leonard",
+          "preview": "Elementos de bloque en el curso de HTML."
+        },
+        {
+          "day": "Miércoles",
+          "time": "11:00 - 13:00",
+          "instructor": "Alice Johnson",
+          "preview": "Elementos en línea en el curso de HTML."
+        },
+        {
+          "day": "Jueves",
+          "time": "12:00 - 14:00",
+          "instructor": "Bob Brown",
+          "preview": "Ventajas y desventajas de HTML en el curso de HTML."
+        },
+        {
+          "day": "Viernes",
+          "time": "13:00 - 15:00",
+          "instructor": "Clara Red",
+          "preview": "Cómo se relacionan HTML, CSS y JavaScript en el curso de HTML."
+        }
+      ],
+      "id": "98cb"
+    },
+    {
+      "title": "Clases de CSS",
+      "description": "Detalles y cronograma de las próximas clases de CSS",
+      "schedule": [
+        {
+          "day": "Lunes",
+          "time": "09:00 - 11:00",
+          "instructor": "Sara White",
+          "preview": "La relación entre HTML y CSS en el curso de CSS."
+        },
+        {
+          "day": "Martes",
+          "time": "10:00 - 12:00",
+          "instructor": "Mike Green",
+          "preview": "Estilos CSS interno, externo e inline en el curso de CSS."
+        },
+        {
+          "day": "Miércoles",
+          "time": "11:00 - 13:00",
+          "instructor": "Linda Black",
+          "preview": "Ventajas de CSS en el curso de CSS."
+        },
+        {
+          "day": "Jueves",
+          "time": "12:00 - 14:00",
+          "instructor": "Greg Orange",
+          "preview": "Las reglas de la estructura en el curso de CSS."
+        },
+        {
+          "day": "Viernes",
+          "time": "13:00 - 15:00",
+          "instructor": "Helen Pink",
+          "preview": "Las posibilidades de personalización en el curso de CSS."
+        }
+      ],
+      "id": "abe3"
+    },
+    {
+      "title": "Clases de JavaScript",
+      "description": "Detalles y cronograma de las próximas clases de JavaScript",
+      "schedule": [
+        {
+          "day": "Lunes",
+          "time": "09:00 - 11:00",
+          "instructor": "Oscar Blue",
+          "preview": "ECMAScript en el curso de JavaScript."
+        },
+        {
+          "day": "Martes",
+          "time": "10:00 - 12:00",
+          "instructor": "Emily Clarke",
+          "preview": "Aplicaciones web y móviles en el curso de JavaScript."
+        },
+        {
+          "day": "Miércoles",
+          "time": "11:00 - 13:00",
+          "instructor": "Jack Black",
+          "preview": "Comportamiento interactivo en los sitios web en el curso de JavaScript."
+        },
+        {
+          "day": "Jueves",
+          "time": "12:00 - 14:00",
+          "instructor": "Ivy White",
+          "preview": "Construcción de servidores web y aplicaciones de servidor en el curso de JavaScript."
+        },
+        {
+          "day": "Viernes",
+          "time": "13:00 - 15:00",
+          "instructor": "Oscar Blue",
+          "preview": "¿En qué se diferencia de otros lenguajes de programación? en el curso de JavaScript."
+        }
+      ],
+      "id": "25b0"
+    },
+    {
+      "title": "Clases de React",
+      "description": "Detalles y cronograma de las próximas clases de React",
+      "schedule": [
+        {
+          "day": "Lunes",
+          "time": "09:00 - 11:00",
+          "instructor": "Carmelo Anthony",
+          "preview": "JSX en el curso de React."
+        },
+        {
+          "day": "Martes",
+          "time": "10:00 - 12:00",
+          "instructor": "Khawi Leonard",
+          "preview": "Virtual DOM en el curso de React."
+        },
+        {
+          "day": "Miércoles",
+          "time": "11:00 - 13:00",
+          "instructor": "Alice Johnson",
+          "preview": "Componentes y Props en el curso de React."
+        },
+        {
+          "day": "Jueves",
+          "time": "12:00 - 14:00",
+          "instructor": "Bob Brown",
+          "preview": "Gestión de Estado en el curso de React."
+        },
+        {
+          "day": "Viernes",
+          "time": "13:00 - 15:00",
+          "instructor": "Clara Red",
+          "preview": "Redux en el curso de React."
+        }
+      ],
+      "id": "1c62"
+    },
+    {
+      "title": "Clases de Angular",
+      "description": "Detalles y cronograma de las próximas clases de Angular",
+      "schedule": [
+        {
+          "day": "Lunes",
+          "time": "09:00 - 11:00",
+          "instructor": "Sara White",
+          "preview": "Enlace bidireccional de datos en el curso de Angular."
+        },
+        {
+          "day": "Martes",
+          "time": "10:00 - 12:00",
+          "instructor": "Mike Green",
+          "preview": "Estructura de código en el curso de Angular."
+        },
+        {
+          "day": "Miércoles",
+          "time": "11:00 - 13:00",
+          "instructor": "Linda Black",
+          "preview": "Compatibilidad móvil y de escritorio en el curso de Angular."
+        },
+        {
+          "day": "Jueves",
+          "time": "12:00 - 14:00",
+          "instructor": "Greg Orange",
+          "preview": "Directivas en el curso de Angular."
+        }
+      ],
+      "id": "1610"
+    }
+  ]
+}

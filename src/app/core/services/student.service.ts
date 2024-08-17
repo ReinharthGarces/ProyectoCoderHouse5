@@ -1,76 +1,76 @@
 import { Injectable } from '@angular/core';
-import { Student } from '../../features/students/models/student.model';
+// import { Student } from '../../features/students/models/student.model';
 import { SwalService } from './swal.service';
 import { BehaviorSubject, Observable, throwError } from 'rxjs';
-import { catchError, tap } from 'rxjs/operators';
+import { catchError, map, tap } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../../environments/environment.development';
+import { HttpErrorsService } from './http-errors.service';
+import { User } from '../../features/auth-module/login/models/user.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class StudentsService {
-  private studentsSubject: BehaviorSubject<Student[]> = new BehaviorSubject<Student[]>([]);
-  public students$: Observable<Student[]> = this.studentsSubject.asObservable();
+  private studentsSubject: BehaviorSubject<User[]> = new BehaviorSubject<User[]>([]);
+  public students$: Observable<User[]> = this.studentsSubject.asObservable();
 
-  private apiURL = environment.apiURL + '/students';
+  private apiURL = `${environment.apiURL}/users`;
 
-  constructor(private swalService: SwalService, private http: HttpClient) {
+  constructor(
+    private swalService: SwalService,
+    private http: HttpClient,
+    private httpError: HttpErrorsService) {
     this.loadInitialData();
   }
 
   private loadInitialData(): void {
-    this.getAllStudents().subscribe(
-      students => this.studentsSubject.next(students),
-      error => console.error('Error al cargar los estudiantes:', error)
+    this.getAllStudents().subscribe({
+      next: (students) => {
+        this.studentsSubject.next(students);
+      },
+      error: (error) => {
+        console.error('Error al cargar estudiantes:', error);
+        this.httpError.handleError(error).subscribe();
+      }
+    });
+  }
+
+  getAllStudents(): Observable<User[]> {
+    return this.http.get<User[]>(this.apiURL).pipe(
+      map((students: User[]) => {
+        return students.filter(students => students.role === 'Student');
+      }),
+      catchError(error => {
+        console.error('Error en getAllStudents:', error);
+        return this.httpError.handleError(error);
+      })
     );
   }
 
-  getAllStudents(): Observable<Student[]> {
-    return this.http.get<Student[]>(this.apiURL).pipe(
-      catchError(this.handleError)
-    );
-  }
-
-  addStudent(student: Student): void {
+  addStudent(student: User): void {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    this.http.post<Student>(this.apiURL, student, { headers }).pipe(
-      tap( newStudent => {
-        this.getAllStudents().subscribe(
-          students => this.studentsSubject.next(students)
-        );
-        this.swalService.success('Estudiante agregado');
-        console.log(newStudent)
-      }),
-      catchError(this.handleError)
+    this.http.post<User>(this.apiURL, student, { headers }).pipe(
+      tap(() => this.refreshStudentsList()),
+      catchError(error => this.httpError.handleError(error))
     ).subscribe();
   }
 
-  editStudent(student: Student): void {
+  editStudent(student: User): void {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    this.http.put<Student>(`${this.apiURL}/${student.id}`, student, { headers }).pipe(
-      tap(updatedStudent => {
-        this.getAllStudents().subscribe(
-          students => this.studentsSubject.next(students)
-        );
-        this.swalService.success('Datos editados');
-      }),
-      catchError(this.handleError)
+    this.http.put<User>(`${this.apiURL}/${student.id}`, student, { headers }).pipe(
+      tap(() => this.refreshStudentsList()),
+      catchError(error => this.httpError.handleError(error))
     ).subscribe();
   }
 
-  deleteStudent(student: Student): void {
+  deleteStudent(student: User): void {
     this.swalService.delete('¿Está seguro de que desea eliminar este estudiante?')
       .then((result) => {
         if (result.isConfirmed) {
           this.http.delete(`${this.apiURL}/${student.id}`).pipe(
-            tap(() => {
-              this.getAllStudents().subscribe(
-                students => this.studentsSubject.next(students)
-              );
-              this.swalService.success('Estudiante eliminado');
-            }),
-            catchError(this.handleError)
+            tap(() => this.refreshStudentsList()),
+            catchError(error => this.httpError.handleError(error))
           ).subscribe();
         } else {
           console.log('Eliminación cancelada por el usuario.');
@@ -78,14 +78,13 @@ export class StudentsService {
       });
   }
 
-  private handleError(error: any): Observable<never> {
-    console.error('Ocurrio un error:', error);
-    return throwError('Algo malo paso; porfavor intenta de nuevo mas tarde.');
-  }
-
   getStudentById(id: string): Observable<any> {
     return this.http.get<any>(`${this.apiURL}/${id}`).pipe(
-      catchError(this.handleError)
+      catchError(error => this.httpError.handleError(error))
     );
+  }
+
+  refreshStudentsList(): void {
+    this.loadInitialData();
   }
 }

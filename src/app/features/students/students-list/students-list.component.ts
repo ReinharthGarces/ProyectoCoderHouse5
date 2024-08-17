@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Student } from '../models/student.model';
 import { MatDialog } from '@angular/material/dialog';
 import { StudentsFormComponent } from '../students-form/students-form.component';
 import { StudentsService } from '../../../core/services/student.service';
 import { Router } from '@angular/router';
+import { User } from '../../auth-module/login/models/user.model';
 
 
 @Component({
@@ -13,11 +13,11 @@ import { Router } from '@angular/router';
 })
 
 export class StudentsListComponent implements OnInit {
-  dataSource: Student[] = [];
+  dataSource: User[] = [];
   displayedColumns: string[] = ['id', 'fullName', 'email', 'actions'];
   showForm: boolean = false;
   isEditing: boolean = false;
-  selectedStudent: Student | null = null;
+  selectedStudent: User | null = null;
   isLoading: boolean = true;
 
   constructor(
@@ -27,10 +27,10 @@ export class StudentsListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.updateDataSource();
+    this.loadStudents();
   }
 
-  private updateDataSource(): void {
+  private loadStudents(): void {
     this.isLoading = true; 
     setTimeout(() => {
       this.studentsService.students$.subscribe(students => {
@@ -40,7 +40,7 @@ export class StudentsListComponent implements OnInit {
     }, 1000);
   }
 
-  openDialog(student?: Student): void {
+  openDialog(student?: User): void {
     const dialogRef = this.dialog.open(StudentsFormComponent, {
       data: student || {}
     });
@@ -57,15 +57,15 @@ export class StudentsListComponent implements OnInit {
     });
   }
 
-  addStudent(student: Student): void {
+  addStudent(student: User): void {
     this.studentsService.addStudent(student);
   }
 
-  editStudent(student: Student): void {
+  editStudent(student: User): void {
     this.studentsService.editStudent(student);
   }
 
-  deleteStudent(student: Student): void {
+  deleteStudent(student: User): void {
     this.studentsService.deleteStudent(student);
   }
 

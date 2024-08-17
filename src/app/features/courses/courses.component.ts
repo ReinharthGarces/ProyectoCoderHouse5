@@ -9,13 +9,22 @@ import { CoursesService } from '../../core/services/courses.service';
 })
 
 export class CoursesComponent implements OnInit {
-  courses: Course[];
+  courses: Course[] = [];
 
-  constructor(private coursesService: CoursesService) {
-    this.courses = [];
-  }
+  constructor(private coursesService: CoursesService) {}
 
   ngOnInit(): void {
-    this.courses = this.coursesService.getAllCourses();
+    this.loadCourses();
+  }
+
+  loadCourses(): void {
+    this.coursesService.getAllCourses().subscribe({
+      next: (courses: Course[]) => {
+        this.courses = courses;
+      },
+      error: (error) => {
+        console.error('Error al cargar los cursos:', error);
+      }
+    });
   }
 }

@@ -3,17 +3,17 @@
 .class-card {
   background-color: $secondary-color;
   opacity: $my-opacity;
-  margin:5vh 15vw;
-  box-shadow: $deeper-card
+  margin: 5vh 15vw;
+  box-shadow: $deeper-card;
 }
 
-mat-card-header{
+mat-card-header {
   color: $primary-color;
   text-shadow: $deeper-text;
   justify-content: center;
 }
 
-mat-card-title{
+mat-card-title {
   font-family: $primary-title-font;
   font-weight: 900;
 }
@@ -29,6 +29,6 @@ mat-list {
 }
 
 strong {
-  color:antiquewhite;
+  color: antiquewhite;
   font-size: medium;
 }
