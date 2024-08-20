@@ -8,7 +8,7 @@
 
 @else {
 <button mat-raised-button appTitleSize (click)="openDialog()">
-  {{ showForm ? 'Cancel' : '+ Sign Up' }}
+  {{ showForm ? 'Cancelar' : '+ Agregar' }}
 </button>
 
 <div class="student-table">
@@ -20,17 +20,17 @@
     </ng-container>
 
     <ng-container matColumnDef="fullName">
-      <th mat-header-cell *matHeaderCellDef> Full Name</th>
+      <th mat-header-cell *matHeaderCellDef> Nombre Completo </th>
       <td mat-cell *matCellDef="let student"> {{ student| fullName }} </td>
     </ng-container>
 
     <ng-container matColumnDef="email">
-      <th mat-header-cell *matHeaderCellDef> Email </th>
+      <th mat-header-cell *matHeaderCellDef> Correo Electronico </th>
       <td mat-cell *matCellDef="let student"> {{student.email}} </td>
     </ng-container>
 
     <ng-container matColumnDef="actions">
-      <th mat-header-cell *matHeaderCellDef> Actions </th>
+      <th mat-header-cell *matHeaderCellDef> Acciones </th>
       <td mat-cell *matCellDef="let student">
         <button class="view" mat-icon-button (click)="viewProfile(student.id)">
           <mat-icon>visibility</mat-icon>

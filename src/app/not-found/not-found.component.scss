@@ -1,0 +1,48 @@
+@import '../../scss/variables';
+
+.not-found-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 3vh;
+}
+.not-found-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40vw;
+  height: 60vh;
+  border-radius: 50%;
+  box-shadow: $deeper-card;
+  position: relative; 
+  overflow: hidden; 
+}
+
+.not-found-container img {
+  width: 100%; 
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+span {
+  text-shadow: $deeper-text;
+  font-weight: 750;
+  font-size: 2rem;
+  color: Black;
+  position: absolute; 
+  top: 10%; 
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 10vh;
+  animation-duration: 2s;
+}
+
+button {
+  opacity: $my-opacity;
+  text-shadow: $deeper-text;
+}

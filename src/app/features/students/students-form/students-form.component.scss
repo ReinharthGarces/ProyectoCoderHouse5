@@ -6,9 +6,14 @@ mat-form-field {
 
 h2 {
   text-align: center;
-  background-color: $primary-color;
+  text-shadow: $deeper-text;
+  background: $first-gradient;
 }
 
 mat-error{
   color: rgb(182, 63, 63);
+}
+
+mat-dialog-actions {
+  justify-content: center;
 }

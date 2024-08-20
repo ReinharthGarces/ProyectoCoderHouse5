@@ -37,4 +37,16 @@
   border-radius: 4px;
 }
 
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  animation-duration: 2s;
+}
+
+button{
+  opacity: $my-opacity;
+  text-shadow: $deeper-text;
+}
+
 

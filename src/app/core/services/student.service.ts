@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 // import { Student } from '../../features/students/models/student.model';
 import { SwalService } from './swal.service';
 import { BehaviorSubject, Observable, throwError } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
+import { catchError, map, switchMap, tap } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../../environments/environment.development';
 import { HttpErrorsService } from './http-errors.service';
@@ -24,6 +24,10 @@ export class StudentsService {
     this.loadInitialData();
   }
 
+  private generateToken(): string {
+    return Math.random().toString(36).substr(2, 15);
+  }
+  
   private loadInitialData(): void {
     this.getAllStudents().subscribe({
       next: (students) => {
@@ -49,18 +53,30 @@ export class StudentsService {
   }
 
   addStudent(student: User): void {
+  const { id, ...studentWithoutId } = student;
+  const newStudent = {
+    ...studentWithoutId,
+    role: 'Student',
+    token: this.generateToken(),
+  };
+
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    this.http.post<User>(this.apiURL, student, { headers }).pipe(
+    this.http.post<User>(this.apiURL, newStudent, { headers }).pipe(
       tap(() => this.refreshStudentsList()),
       catchError(error => this.httpError.handleError(error))
     ).subscribe();
   }
 
   editStudent(student: User): void {
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    this.http.put<User>(`${this.apiURL}/${student.id}`, student, { headers }).pipe(
-      tap(() => this.refreshStudentsList()),
-      catchError(error => this.httpError.handleError(error))
+    this.getStudentById(student.id).pipe(
+      switchMap(currentUser => {
+        const updatedUser = { ...currentUser, ...student };
+        const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+        return this.http.put<User>(`${this.apiURL}/${student.id}`, updatedUser, { headers }).pipe(
+          tap(() => this.refreshStudentsList()),
+          catchError(error => this.httpError.handleError(error))
+        );
+      })
     ).subscribe();
   }
 

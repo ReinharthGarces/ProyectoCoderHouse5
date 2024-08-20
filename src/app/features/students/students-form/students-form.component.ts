@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Inject, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { Student } from '../models/student.model';
+import { User } from '../../auth-module/login/models/user.model';
 
 
 @Component({
@@ -10,15 +10,15 @@ import { Student } from '../models/student.model';
   styleUrl: './students-form.component.scss'
 })
 export class StudentsFormComponent implements OnInit {
-  @Output() studentAdded = new EventEmitter<Student>();
+  @Output() studentAdded = new EventEmitter<User>();
   studentForm: FormGroup;
   isEditing: boolean;
-  student: Student | null = null;
+  student: User | null = null;
 
   constructor(
     private fb: FormBuilder,
     private dialogRef: MatDialogRef<StudentsFormComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Student
+    @Inject(MAT_DIALOG_DATA) public data: User
   ) {
     this.isEditing = !!data?.id;
     this.studentForm = this.fb.group({
@@ -26,6 +26,7 @@ export class StudentsFormComponent implements OnInit {
       firstName: [data?.firstName || '', Validators.required],
       lastName: [data?.lastName || '', Validators.required],
       email: [data?.email || '', [Validators.required, Validators.email]],
+      password: [data?.password || '', Validators.required]
     });
   }
 

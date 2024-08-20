@@ -8,10 +8,17 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 export class ToolbarComponent implements OnInit{
   @Output() drawerToggle = new EventEmitter<void>();
+  userName: string | null = '';
 
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    const authUser = localStorage.getItem('authUser');
+    if (authUser) {
+      const user = JSON.parse(authUser);
+      this.userName = user.firstName;
+    }
+  }
 
   toggleDrawer() {
     this.drawerToggle.emit();

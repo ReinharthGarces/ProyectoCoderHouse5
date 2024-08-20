@@ -1,32 +1,40 @@
 <!-- Form of Students -->
-  <h2 mat-dialog-title>{{ isEditing ? 'Editing' : 'Add Student' }}</h2>
+  <h2 mat-dialog-title>{{ isEditing ? 'Editando' : 'Agregar Estudiante' }}</h2>
 
-  <mat-dialog-content>
+  <mat-dialog-content class="dialog">
     <form [formGroup]="studentForm">
-      <mat-form-field>
-        <mat-label>First Name</mat-label>
+      <mat-form-field appearance="outline">
+        <mat-label>Nombre</mat-label>
         <input matInput formControlName="firstName">
-        <mat-error *ngIf="studentForm.get('firstName')?.invalid">First Name is required</mat-error>
+        <mat-error *ngIf="studentForm.get('firstName')?.invalid">Nombre es requerido</mat-error>
       </mat-form-field>
   
-      <mat-form-field>
-        <mat-label>Last Name</mat-label>
+      <mat-form-field appearance="outline">
+        <mat-label>Apellido</mat-label>
         <input matInput formControlName="lastName">
-        <mat-error *ngIf="studentForm.get('lastName')?.invalid">Last Name is required</mat-error>
+        <mat-error *ngIf="studentForm.get('lastName')?.invalid">Apellido es requerido</mat-error>
       </mat-form-field>
   
-      <mat-form-field>
+      <mat-form-field appearance="outline">
         <mat-label>Email</mat-label>
         <input matInput formControlName="email">
-        <mat-error *ngIf="studentForm.get('email')?.invalid">Valid Email is required</mat-error>
+        <mat-error *ngIf="studentForm.get('email')?.invalid">Email es requerido</mat-error>
       </mat-form-field>
-  
+
+      <ng-container *ngIf="!isEditing">
+        <mat-form-field appearance="outline">
+          <mat-label>Contraseña</mat-label>
+          <input matInput type="password" formControlName="password">
+          <mat-error *ngIf="studentForm.get('password')?.invalid">Contraseña es requerida</mat-error>
+        </mat-form-field>
+      </ng-container>
+
       <mat-dialog-actions>
         <button mat-raised-button (click)="onSubmit()" type="submit" [disabled]="studentForm.invalid">
-          {{ isEditing ? 'Save Changes' : 'Save' }}
+          {{ isEditing ? 'Guardar cambios' : 'Guardar' }}
         </button>
         <button mat-raised-button (click)="onCancel()" type="button">
-          {{ isEditing ? 'Cancel Changes' : 'Cancel' }}
+          {{ isEditing ? 'Cancelar cambios' : 'Cancelar' }}
         </button>
       </mat-dialog-actions>    
     </form>

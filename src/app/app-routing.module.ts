@@ -4,6 +4,8 @@ import { authGuard } from './core/guards/auth.guard';
 import { LoginComponent } from './features/auth-module/login/login.component';
 import { ProfileComponent } from './features/auth-module/profile/profile.component';
 import { RegisterComponent } from './features/auth-module/register/register.component';
+import { EnrollmentsComponent } from './features/auth-module/enrollments/enrollments.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 const routes: Routes = [{
   path: 'home',
@@ -26,8 +28,14 @@ const routes: Routes = [{
     component: RegisterComponent,
     loadChildren: () => import('./features/auth-module/auth.module').then(m => m.AuthModule)
   },
+  {
+    path: 'enrollments/:id',
+    canActivate: [authGuard],
+    component: EnrollmentsComponent,
+    loadChildren: () => import('./features/auth-module/auth.module').then(m => m.AuthModule)
+  },
   { path: '**',  // Si no coinciden con ninguna ruta
-    redirectTo: 'home'
+    component: NotFoundComponent
   }
 ];
 

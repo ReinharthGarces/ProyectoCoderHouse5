@@ -9,8 +9,10 @@
             <li *ngFor="let topic of course.topics">{{ topic }}</li>
           </ul>
         </div>
+        <div class="button-container animate__animated animate__slideInDown">
+        <button mat-raised-button [routerLink]="['/enrollments', course.id]"> Inscribirse</button>
+        </div>
       </ng-template>
     </mat-tab>
   </mat-tab-group>
 </div>
-<router-outlet></router-outlet>

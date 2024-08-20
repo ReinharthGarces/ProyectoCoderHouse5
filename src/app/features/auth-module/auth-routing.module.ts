@@ -4,6 +4,7 @@ import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 import { RegisterComponent } from './register/register.component';
 import { authGuard } from '../../core/guards/auth.guard';
+import { NotFoundComponent } from '../../not-found/not-found.component';
 
 const routes: Routes = [
   { path: '',

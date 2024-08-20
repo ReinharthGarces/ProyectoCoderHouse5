@@ -6,7 +6,7 @@
       "lastName": "Kuvalis",
       "email": "Domenica13@gmail.com",
       "password": "WJ3D4SIUEEmkjZZ",
-      "role": "Professor",
+      "role": "Student",
       "token": "rk5f1m8b9j0v4y7"
     },
     {
@@ -24,7 +24,7 @@
       "lastName": "Schulist",
       "email": "Aurore.Fay@hotmail.com",
       "password": "nJBwi2Sl7k7VWQ8",
-      "role": "Professor",
+      "role": "Student",
       "token": "9s3k2t6n0r1m5z8"
     },
     {
@@ -33,7 +33,7 @@
       "lastName": "Stamm",
       "email": "Clair.Schumm@gmail.com",
       "password": "baOmitUNTIeGjms",
-      "role": "Professor",
+      "role": "Student",
       "token": "4x9r8t6n0k3z5p1"
     },
     {
@@ -74,12 +74,12 @@
     },
     {
       "id": "9203",
-      "firstName": "Haven",
+      "firstName": "Haveni",
       "lastName": "Blick",
       "email": "Daphney.Schmeler@gmail.com",
       "password": "_bdO35cwU7hmrwZ",
       "role": "Student",
-      "token": "4k5r8p1n0z3t2m6"
+      "token": "6p1rty54sz2t5m3"
     },
     {
       "id": "8125",
@@ -91,21 +91,6 @@
       "token": "8t1p3r6k0z5m2n4"
     },
     {
-      "id": "3741",
-      "firstName": "Reinharth",
-      "lastName": "Garces",
-      "email": "reinharth_26@hotmail.com"
-    },
-    {
-      "id": "c7b1",
-      "firstName": "hola",
-      "lastName": "hola",
-      "email": "hola@hola",
-      "password": "hola",
-      "role": "Professor",
-      "token": "yl8uxjjrzsj"
-    },
-    {
       "id": "6631",
       "firstName": "ola",
       "lastName": "ola",
@@ -113,6 +98,15 @@
       "password": "ola",
       "role": "Professor",
       "token": "jiw0fiyf2t9"
+    },
+    {
+      "id": "3741",
+      "firstName": "Reinharth",
+      "lastName": "Garces",
+      "email": "reinharth_26@hotmail.com",
+      "password": "123456",
+      "role": "Professor",
+      "token": "8t1p3r6k0zasdn4"
     }
   ],
   "courses": [
@@ -357,5 +351,6 @@
       ],
       "id": "1610"
     }
-  ]
+  ],
+  "enrollments": []
 }

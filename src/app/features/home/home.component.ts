@@ -8,7 +8,6 @@ import { Component } from '@angular/core';
 
 export class HomeComponent {
   constructor() {}
-  //Courses data
   title = 'Cursos de Frontend';
   heroTitle = 'Domina el Desarrollo Frontend';
   heroSubtitle = 'Aprende HTML, CSS, JavaScript y mas con nuestros cursos interactivos.';

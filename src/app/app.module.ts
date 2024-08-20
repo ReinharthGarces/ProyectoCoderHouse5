@@ -13,11 +13,13 @@ import { StoreModule } from '@ngrx/store';
 import { rootReducer } from './core/store/index';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,

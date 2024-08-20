@@ -1,14 +1,21 @@
 <div class="toolbar-content">
   <mat-toolbar>
-    <button
-      (click)="toggleDrawer()"
-      mat-icon-button
-      class="menu-icon">
-      <mat-icon>menu</mat-icon>
-    </button>
-    <a class="tittle" routerLink="/home">ReinharthCourses</a>
+    <div class="left-section">
+      <button
+        (click)="toggleDrawer()"
+        mat-icon-button
+        class="menu-icon">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <a class="title" routerLink="/home">ReinharthCourses</a>
+    </div>
+    <div class="right-section">
+      <span class="user-info" *ngIf="userName">Bienvenido, <strong>{{ userName }}!</strong></span>
+    </div>
   </mat-toolbar>
 </div>
+
+
 
 
 

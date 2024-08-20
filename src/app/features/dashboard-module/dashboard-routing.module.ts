@@ -6,6 +6,7 @@ import { StudentsListComponent } from '../students/students-list/students-list.c
 import { HomeComponent } from '../home/home.component';
 import { authGuard } from '../../core/guards/auth.guard';
 import { professorGuard } from '../../core/guards/professor.guard';
+import { NotFoundComponent } from '../../not-found/not-found.component';
 
 
 const routes: Routes = [
@@ -30,7 +31,7 @@ const routes: Routes = [
   { path: 'classes', 
     canActivate: [authGuard],
     component: ClassesComponent
-  }
+  },
 ];
 
 @NgModule({

@@ -33,29 +33,24 @@ export class AuthService {
   }
 
   login(data: { email: string; password: string }): void {
-    this.http.get<User[]>(this.apiURL, {
-      params: {
-        email: data.email,
-        password: data.password
-      }
-    })
-    .subscribe({
-      next: (response) => {
-        if (!response.length) {
-          alert('Usuario o contraseña inválidos');
-        } else {
-          const authUser = response[0];
-          localStorage.setItem('authUser', JSON.stringify(authUser));
-          this.authUserSubject.next(authUser);
-          this.router.navigate(['home']);
-          this.startInactivityTimer(); 
-        }
-      },
-      error: (err) => {
-        console.error('Error al iniciar sesión', err);
-        this.swalService.sendErrorNotification('Error al iniciar sesión');
-      },
-    });
+    this.http.get<User[]>(`${this.apiURL}?email=${data.email}`)
+      .subscribe({
+        next: (response) => {
+          if (!response.length || response[0].password !== data.password) {
+            alert('Usuario o contraseña inválidos');
+          } else {
+            const authUser = response[0];
+            localStorage.setItem('authUser', JSON.stringify(authUser));
+            this.authUserSubject.next(authUser);
+            this.router.navigate(['home']);
+            this.startInactivityTimer(); 
+          }
+        },
+        error: (err) => {
+          console.error('Error al iniciar sesión', err);
+          this.swalService.sendErrorNotification('Error al iniciar sesión');
+        },
+      });
   }
 
   logout() {

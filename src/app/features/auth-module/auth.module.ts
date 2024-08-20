@@ -2,14 +2,17 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AuthRoutingModule } from './auth-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
-import { LoginComponent } from './login/login.component';
 import { MaterialModule } from '../../core/material/material.module';
+import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-import { StoreModule } from '@ngrx/store';
-import { authFeature } from './store/auth.reducer';
-import { EffectsModule } from '@ngrx/effects';
-import { AuthEffects } from './store/auth.effects';
 import { ProfileComponent } from './profile/profile.component';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { authFeature } from './store/auth.reducer';
+import { AuthEffects } from './store/auth.effects';
+import { EnrollmentsComponent } from './enrollments/enrollments.component';
+import { EnrollmentsEffects } from './enrollments/store/enrollments.effects';
+import { enrollmentsFeature } from './enrollments/store/enrollments.reducer';
 
 
 
@@ -17,7 +20,8 @@ import { ProfileComponent } from './profile/profile.component';
   declarations: [
     LoginComponent,
     RegisterComponent,
-    ProfileComponent
+    ProfileComponent,
+    EnrollmentsComponent
   ],
   exports: [
     LoginComponent,
@@ -30,7 +34,8 @@ import { ProfileComponent } from './profile/profile.component';
     ReactiveFormsModule,
     MaterialModule,
     StoreModule.forFeature(authFeature),
-    EffectsModule.forFeature([AuthEffects]),
+    StoreModule.forFeature(enrollmentsFeature),
+    EffectsModule.forFeature([AuthEffects, EnrollmentsEffects]),
   ]
 })
 export class AuthModule { }
