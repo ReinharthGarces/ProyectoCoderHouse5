@@ -27,7 +27,6 @@ export const initialState: State = {
 export const reducer = createReducer(
   initialState,
   on(EnrollmentsActions.loadEnrollments, (state) => {
-    console.log('EnrollmentsActions.loadEnrollments', state);
     return {
       ...state,
       isLoading: true,
@@ -50,20 +49,20 @@ export const reducer = createReducer(
 
   on(EnrollmentsActions.loadStudentsAndCourses, (state) => ({
     ...state,
-    isLoadingStudentsAndProducts: true,
+    isLoadingStudentsAndCourses: true,
   })),
 
   on(EnrollmentsActions.loadStudentsAndCoursesSuccess, (state, action) => ({
     ...state,
-    isLoadingStudentsAndProducts: false,
-    products: action.data.courses,
+    isLoadingStudentsAndCourses: false,
+    courses: action.data.courses,
     students: action.data.students,
     error: null,
   })),
 
   on(EnrollmentsActions.loadStudentsAndCoursesFailure, (state, action) => ({
     ...state,
-    isLoadingStudentsAndProducts: false,
+    isLoadingStudentsAndCourses: false,
     error: action.error,
   })),
 
@@ -87,4 +86,3 @@ export const enrollmentsFeature = createFeature({
   name: enrollmentsFeatureKey,
   reducer,
 });
-

@@ -352,5 +352,31 @@
       "id": "1610"
     }
   ],
-  "enrollments": []
+  "enrollments": [
+    {
+      "id": "ef57",
+      "studentId": "4892",
+      "courseId": "4f9e"
+    },
+    {
+      "id": "42c7",
+      "studentId": "4892",
+      "courseId": "93a6"
+    },
+    {
+      "id": "6b90",
+      "userId": "3167",
+      "courseId": "93a6"
+    },
+    {
+      "id": "cf05",
+      "userId": "4892",
+      "courseId": "4f9e"
+    },
+    {
+      "id": "04e1",
+      "userId": "2458",
+      "courseId": "c51b"
+    }
+  ]
 }

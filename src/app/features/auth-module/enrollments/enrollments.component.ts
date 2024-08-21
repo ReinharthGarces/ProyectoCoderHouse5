@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { CoursesService } from '../../../core/services/courses.service';
 import { Course } from '../../courses/models/course.model';
 import { Store } from '@ngrx/store';
 import { EnrollmentsActions } from './store/enrollments.actions';
@@ -24,10 +22,7 @@ export class EnrollmentsComponent implements OnInit {
   error$: Observable<unknown>;
   students$: Observable<User[]>;
   courses$: Observable<Course[]>;
-    enrollmentSuccess: boolean = false;
-  // courseId: string | null = null;
-  // course: Course | null = null;
-
+  enrollmentSuccess: boolean = false;
 
   constructor(
     private swalService: SwalService,
@@ -47,51 +42,20 @@ export class EnrollmentsComponent implements OnInit {
 
   ngOnInit(): void {
     this.store.dispatch(EnrollmentsActions.loadEnrollments());
-    // this.courseId = this.route.snapshot.paramMap.get('id');
-    // if (this.courseId) {
-    //   this.loadCourseDetails(this.courseId);
-    // }
+    this.store.dispatch(EnrollmentsActions.loadStudentsAndCourses());
   }
 
   addEnrollment(): void {
     if (this.enrollmentForm.invalid) {
-      alert('El form es invalido');
+      alert('El formulario es inválido');
     } else {
-      this.store.dispatch(
-        EnrollmentsActions.createEnrollment({
-          payload: {
-            courseId: this.enrollmentForm.get('coursesId')?.value,
-            studentId: this.enrollmentForm.get('studentId')?.value,
-          },
-        })
-      );
-      this.swalService.sendSuccessNotification('Se agrego una inscripcion!');
-      this.enrollmentSuccess = true;
+      let payload = {
+        userId: this.enrollmentForm.get('studentId')?.value,
+        courseId: this.enrollmentForm.get('courseId')?.value,
+      };
+      this.store.dispatch(EnrollmentsActions.createEnrollment({ payload }));
+      this.swalService.sendSuccessNotification('¡Inscripción añadida con éxito!');
     }
   }
-  // loadCourseDetails(id: string): void {
-  //   this.coursesService.getCourseById(id).subscribe({
-  //     next: (course) => {
-  //       this.course = course;
-  //       this.isLoading = false;
-  //     },
-  //     error: (err) => {
-  //       console.error('Error loading course details:', err);
-  //       this.isLoading = false;
-  //     }
-  //   });
-  // }
-
-  // enrollInCourse(): void {
-  //   if (this.courseId) {
-  //     this.coursesService.enrollInCourse(this.courseId).subscribe({
-  //       next: () => {
-  //         this.enrollmentSuccess = true;
-  //       },
-  //       error: (err) => {
-  //         console.error('Error enrolling in course:', err);
-  //       }
-  //     });
-  //   }
-  // }
+  
 }

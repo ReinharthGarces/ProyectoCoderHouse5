@@ -5,6 +5,8 @@ export interface Enrollment {
   id: string;
   studentId: string;
   courseId: string;
+  student: User;
+  course: Course;
 }
 
 export interface LoadStudentsAndCoursesResponse {
@@ -12,6 +14,6 @@ export interface LoadStudentsAndCoursesResponse {
   courses: Course[];
 }
 export interface CreateEnrollmentPayload {
-  studentId: string;
-  courseId: string;
+  userId: User['id'];
+  courseId: Course['id'];
 }
