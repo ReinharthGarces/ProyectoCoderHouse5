@@ -36,7 +36,7 @@ describe('StudentsService', () => {
       { id: 1, firstName: 'John', lastName: 'Doe', email: 'john.doe@example.com' }
     ];
 
-    const req = httpMock.expectOne(`${environment.apiURL}/students`);
+    const req = httpMock.expectOne(`${environment.apiURL}/users`);
     expect(req.request.method).toBe('GET');
     req.flush(dummyStudents);
   });

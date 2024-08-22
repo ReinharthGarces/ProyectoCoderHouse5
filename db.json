@@ -345,11 +345,6 @@
   ],
   "enrollments": [
     {
-      "id": "ef57",
-      "studentId": "4892",
-      "courseId": "4f9e"
-    },
-    {
       "id": "8dbb",
       "userId": "3167",
       "courseId": "7d13"
@@ -358,6 +353,21 @@
       "id": "d5da",
       "userId": "4892",
       "courseId": "7c9a"
+    },
+    {
+      "id": "f1f8",
+      "userId": "9304",
+      "courseId": "c51b"
+    },
+    {
+      "id": "bede",
+      "userId": "9203",
+      "courseId": "4f9e"
+    },
+    {
+      "id": "e9da",
+      "userId": "5478",
+      "courseId": "c51b"
     }
   ]
 }
