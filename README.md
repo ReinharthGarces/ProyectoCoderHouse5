@@ -1,30 +1,55 @@
-# CoderHouseAngularApp
+# ReinharthCourses
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.3.
+ReinharthCourses es una plataforma de cursos en línea que permite a los usuarios inscribirse tanto como profesores como alumnos. La aplicación está diseñada para ofrecer una experiencia interactiva de gestión de cursos y clases utilizando Angular y TypeScript.
 
-## Development server
+## Descripción del Proyecto
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+En ReinharthCourses, los usuarios pueden:
 
-## Code scaffolding
+- **Iniciar sesión**: Los usuarios registrados pueden iniciar sesión en la plataforma. Si no estás registrado, puedes seguir el enlace para registrarte.
+- **Registro y Roles**:
+  - **Profesor**: Los profesores pueden acceder a una vista para ver la lista de alumnos y asignarlos a diferentes cursos.
+  - **Alumno**: Los alumnos pueden inscribirse en los cursos que deseen y ver sus próximas clases.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Características
 
-## Build
+- **Interfaz de Usuario**: La aplicación utiliza Angular Material para una experiencia de usuario moderna y atractiva.
+- **Gestión de Datos**: La base de datos se simula utilizando `db.json`, y se gestiona localmente con Json-Server.
+- **Rutas y Navegación**:
+  - **Inicio de sesión**: Página para iniciar sesión o registrarse.
+  - **Panel del Profesor**: Gestión de alumnos y asignación de cursos.
+  - **Panel del Alumno**: Inscripción en cursos y visualización de próximas clases.
+- **Formularios**: Implementación de formularios reactivos con validaciones para el registro y la inscripción.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Tecnologías Utilizadas
 
-## Running unit tests
+- **Frontend**: Angular, TypeScript, Angular Material
+- **Backend**: Json-Server para simular la base de datos
+- **CSS**: SCSS para estilos personalizados
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Instalación y Ejecución
 
-## Running end-to-end tests
+Para comenzar con el proyecto, sigue estos pasos:
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+1. **Clona el Repositorio**:
+   ```bash
+   git clone https://github.com/ReinharthGarces/ProyectoCoderHouse5.git
 
-## Further help
+2. **Instala las Dependencias**:
+   ```bash
+   npm install
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+3. **Inicializa la Base de Datos**:
+   ```bash
+   json-server db.json --watch
+
+4. **Inicializa el proyecto**:
+   ```bash
+   ng serve
+
+La aplicación estará disponible en http://localhost:4200.
+
+Disfruté mucho trabajando en mi primer proyecto con Angular. Entiendo que hay muchas cosas a mejorar, pero espero que puedas disfrutar de esta aplicación elaborada con mucha dedicación y cariño. ¡Muchas gracias por tu interés!
 
 
 

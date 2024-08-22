@@ -28,6 +28,7 @@ export class EnrollmentsComponent implements OnInit {
   enrollmentSuccess: boolean = false;
   isProfessor: boolean = false;
   courseIdFromUrl: string | null = null;
+  selectedCourse: Course | undefined;
 
   constructor(
     private swalService: SwalService,
@@ -58,6 +59,7 @@ export class EnrollmentsComponent implements OnInit {
     this.store.dispatch(EnrollmentsActions.loadStudentsAndCourses());
     this.initializeCourseId();
     this.initializeUserRole();
+    this.loadSelectedCourse();
   }
 
   addEnrollment(): void {
@@ -95,6 +97,14 @@ export class EnrollmentsComponent implements OnInit {
             studentId: storedUserId
           });
         }
+      }
+    });
+  }
+
+  private loadSelectedCourse(): void {
+    this.courses$.subscribe(courses => {
+      if (this.courseIdFromUrl) {
+        this.selectedCourse = courses.find(course => course.id === this.courseIdFromUrl);
       }
     });
   }

@@ -91,15 +91,6 @@
       "token": "8t1p3r6k0z5m2n4"
     },
     {
-      "id": "6631",
-      "firstName": "ola",
-      "lastName": "ola",
-      "email": "ola@ola",
-      "password": "ola",
-      "role": "Professor",
-      "token": "jiw0fiyf2t9"
-    },
-    {
       "id": "3741",
       "firstName": "Reinharth",
       "lastName": "Garces",
@@ -107,15 +98,6 @@
       "password": "123456",
       "role": "Professor",
       "token": "8t1p3r6k0zasdn4"
-    },
-    {
-      "id": "b403",
-      "firstName": "rei",
-      "lastName": "rei",
-      "email": "rei@rei",
-      "password": "rei",
-      "role": "Student",
-      "token": "gdo8444ztzg"
     }
   ],
   "courses": [
@@ -376,21 +358,6 @@
       "id": "d5da",
       "userId": "4892",
       "courseId": "7c9a"
-    },
-    {
-      "id": "936d",
-      "userId": "b403",
-      "courseId": "7c9a"
-    },
-    {
-      "id": "af9e",
-      "userId": "b403",
-      "courseId": "c51b"
-    },
-    {
-      "id": "75c5",
-      "userId": "b403",
-      "courseId": "c51b"
     }
   ]
 }

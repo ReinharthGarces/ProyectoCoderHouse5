@@ -1,65 +1,72 @@
 
 @if (isProfessor) {
-<h1 class="header-title">Inscripciones</h1>
-<hr class="divider"/>
-
-@if (isLoading$ | async) {
-<p>Cargando....</p>
-} @else { @if(error$ | async) {
-
-<p>Ocurrio un error inesperado!!!</p>
-
-} @else {
-<form [formGroup]="enrollmentForm" class="enrollment-form">
-  <div class="col-6">
-    <mat-form-field appearance="outline">
-      <mat-select
-        formControlName="studentId"
-        placeholder="Selecciona un alumno">
-        @for (student of students$ | async; track $index) {
-        <mat-option [value]="student.id">{{ student.firstName }} {{ student.lastName }}</mat-option>
-        }
-      </mat-select>
-    </mat-form-field>
-  </div>
-  <div class="col-6">
-    <mat-form-field appearance="outline">
-      <mat-select
-        formControlName="courseId"
-        placeholder="Selecciona un curso">
-        @for (course of courses$| async; track $index) {
-        <mat-option [value]="course.id">{{ course.title }}</mat-option
-        >
-        }
-      </mat-select>
-    </mat-form-field>
-  </div>
-  <button mat-raised-button (click)="addEnrollment()">Agregar</button>
-</form>
-}}
-
-<mat-accordion class="expansion-panels">
-  @for ( enrollment of enrollments$ | async; track $index) {
-    <mat-expansion-panel (opened)="panelOpenState.set(true)" (closed)="panelOpenState.set(false)">
-    <mat-expansion-panel-header>
-      <mat-panel-title> Inscripción {{ enrollment.id }} </mat-panel-title>
-      <mat-panel-description>
-        {{ enrollment.course.title }}
-      </mat-panel-description>
-    </mat-expansion-panel-header>
-    <p>{{ enrollments$ }}</p>
-  </mat-expansion-panel>
-}
-</mat-accordion>
-} @else {
-  <h2>Inscripción al curso</h2>
-  @if (courses$ | async) {
-    <div>
-      <h3>{{courses$| async}}</h3>
+  <h1 class="header-title">Inscripciones</h1>
+  <hr class="divider"/>
+  
+  @if (isLoading$ | async) {
+  <p>Cargando....</p>
+  } @else { @if(error$ | async) {
+  
+  <p>Ocurrio un error inesperado!!!</p>
+  
+  } @else {
+  <form [formGroup]="enrollmentForm" class="enrollment-form">
+    <div class="col-6">
+      <mat-form-field appearance="outline">
+        <mat-select
+          formControlName="studentId"
+          placeholder="Selecciona un alumno">
+          @for (student of students$ | async; track $index) {
+          <mat-option [value]="student.id">{{ student.firstName }} {{ student.lastName }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="col-6">
+      <mat-form-field appearance="outline">
+        <mat-select
+          formControlName="courseId"
+          placeholder="Selecciona un curso">
+          @for (course of courses$| async; track $index) {
+          <mat-option [value]="course.id">{{ course.title }}</mat-option
+          >
+          }
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <button mat-raised-button (click)="addEnrollment()">Agregar</button>
+  </form>
+  }}
+  <mat-accordion class="expansion-panels">
+    @for ( enrollment of enrollments$ | async; track $index) {
+      <mat-expansion-panel (opened)="panelOpenState.set(true)" (closed)="panelOpenState.set(false)">
+      <mat-expansion-panel-header>
+        <mat-panel-title> Inscripción {{ enrollment.id }} </mat-panel-title>
+        <mat-panel-description>
+          {{ enrollment.course.title }}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <div [ngClass]="{'animate__animated animate__slideInLeft': panelOpenState()}" >
+        <h5>Temas del curso:</h5>
+        <ul>
+          <li *ngFor="let topic of enrollment.course.topics">{{ topic }}</li>
+        </ul>
+      </div>
+    </mat-expansion-panel>
+  }
+  </mat-accordion>
+  } @else {
+    <div class="course-enrollment-container">
+      <h2>Inscripción al curso</h2>
+      <ng-container *ngIf="selectedCourse">
+        <h3>{{ selectedCourse.title }}</h3>
+        <p>{{ selectedCourse.description }}</p>
+        <ul>
+          <li *ngFor="let topic of selectedCourse.topics">{{ topic }}</li>
+        </ul>
+      </ng-container>
+      <form [formGroup]="enrollmentForm" (ngSubmit)="addEnrollment()">
+        <button class="animate__animated animate__slideInDown" mat-raised-button type="submit" [routerLink]="['/classes']">Inscribirse</button>
+      </form>
     </div>
   }
-  <form [formGroup]="enrollmentForm" (click)="addEnrollment()">
-    <button mat-raised-button type="submit">Inscribirse</button>
-  </form>
-}
-
