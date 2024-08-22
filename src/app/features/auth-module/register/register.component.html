@@ -46,7 +46,7 @@
           <mat-label>Role</mat-label>
           <mat-select formControlName="role"> 
             <mat-option value="Professor">Profesor</mat-option>
-            <mat-option value="Student">Estudiante</mat-option>
+            <mat-option value="Student">Alumno</mat-option>
           </mat-select>
           <mat-error *ngIf="registerForm.get('role')?.invalid && registerForm.get('role')?.touched">
             Seleccion un role

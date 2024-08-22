@@ -16,6 +16,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatSelectModule} from '@angular/material/select';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 
 const materialComponents = [
@@ -35,7 +36,8 @@ const materialComponents = [
   MatPaginatorModule,
   MatSortModule,
   MatTabsModule,
-  MatSelectModule
+  MatSelectModule,
+  MatExpansionModule
 ];
 
 @NgModule({

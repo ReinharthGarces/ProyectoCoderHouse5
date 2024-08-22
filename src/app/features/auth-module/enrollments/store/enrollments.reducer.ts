@@ -67,6 +67,7 @@ export const reducer = createReducer(
   })),
 
   on(EnrollmentsActions.createEnrollmentSuccess, (state, action) => {
+    console.log('action.data', action.data);
     return {
       ...state,
       enrollments: [...state.enrollments, action.data],
@@ -86,3 +87,4 @@ export const enrollmentsFeature = createFeature({
   name: enrollmentsFeatureKey,
   reducer,
 });
+

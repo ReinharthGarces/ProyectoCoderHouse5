@@ -1,32 +1,7 @@
-<!-- <div class="enrollments-container" *ngIf="!isLoading; else loading">
-  <div *ngIf="course; else noCourseFound">
-    <h2>Inscripción al curso: {{ course.title }}</h2>
-    <p>{{ course.description }}</p>
-    <ul>
-      <li *ngFor="let topic of course?.topics">{{ topic }}</li>
-    </ul>
-    <button mat-raised-button color="primary" (click)="enrollInCourse()">
-      Inscribirse
-    </button>
-    <p *ngIf="enrollmentSuccess" class="success-message">¡Inscripción exitosa!</p>
-  </div>
-</div>
 
-<ng-template #loading>
-  <div class="loading">
-    <mat-spinner></mat-spinner>
-    <p>Cargando detalles del curso...</p>
-  </div>
-</ng-template>
-
-<ng-template #noCourseFound>
-  <p>Curso no encontrado.</p>
-</ng-template> -->
-
-
-<!-- //////// -->
-<h1>Inscripciones</h1>
-<hr />
+@if (isProfessor) {
+<h1 class="header-title">Inscripciones</h1>
+<hr class="divider"/>
 
 @if (isLoading$ | async) {
 <p>Cargando....</p>
@@ -35,81 +10,56 @@
 <p>Ocurrio un error inesperado!!!</p>
 
 } @else {
-
-<form [formGroup]="enrollmentForm" class="grid formgrid">
+<form [formGroup]="enrollmentForm" class="enrollment-form">
   <div class="col-6">
     <mat-form-field appearance="outline">
       <mat-select
         formControlName="studentId"
-        placeholder="Selecciona un Estudiante">
+        placeholder="Selecciona un alumno">
         @for (student of students$ | async; track $index) {
-        <mat-option [value]="student.id">{{ student.firstName }} {{ student.lastName }}</mat-option>}
+        <mat-option [value]="student.id">{{ student.firstName }} {{ student.lastName }}</mat-option>
+        }
       </mat-select>
     </mat-form-field>
   </div>
   <div class="col-6">
-    <mat-form-field appearance="outline" class="w-full">
+    <mat-form-field appearance="outline">
       <mat-select
         formControlName="courseId"
-        placeholder="Selecciona un Curso">
+        placeholder="Selecciona un curso">
         @for (course of courses$| async; track $index) {
-        <mat-option [value]="course.id">{{ course.title }}</mat-option>}
+        <mat-option [value]="course.id">{{ course.title }}</mat-option
+        >
+        }
       </mat-select>
     </mat-form-field>
   </div>
+  <button mat-raised-button (click)="addEnrollment()">Agregar</button>
 </form>
+}}
 
-<button mat-raised-button (click)="addEnrollment()">Agregar</button>}}
-
-<!-- <div class="enrollments-container">
-  <ng-container *ngIf="isLoading$ | async; else content">
-    <div class="loading">
-      <mat-spinner></mat-spinner>
-      <p>Cargando detalles...</p>
+<mat-accordion class="expansion-panels">
+  @for ( enrollment of enrollments$ | async; track $index) {
+    <mat-expansion-panel (opened)="panelOpenState.set(true)" (closed)="panelOpenState.set(false)">
+    <mat-expansion-panel-header>
+      <mat-panel-title> Inscripción {{ enrollment.id }} </mat-panel-title>
+      <mat-panel-description>
+        {{ enrollment.course.title }}
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <p>{{ enrollments$ }}</p>
+  </mat-expansion-panel>
+}
+</mat-accordion>
+} @else {
+  <h2>Inscripción al curso</h2>
+  @if (courses$ | async) {
+    <div>
+      <h3>{{courses$| async}}</h3>
     </div>
-  </ng-container>
-
-  <ng-template #content>
-    <div *ngIf="courses$ | async as courses; else noCoursesFound">
-      <div *ngIf="students$ | async as students">
-        <h2>Inscripciones</h2>
-        <form [formGroup]="enrollmentForm" (ngSubmit)="addEnrollment()">
-          <mat-form-field appearance="fill">
-            <mat-label>Estudiante</mat-label>
-            <mat-select formControlName="studentId" placeholder="Selecciona un estudiante">
-              <mat-option *ngFor="let student of students" [value]="student.id">
-                {{ student.firstName }} {{ student.lastName }}
-              </mat-option>
-            </mat-select>
-            <mat-error *ngIf="enrollmentForm.get('studentId')?.hasError('required')">
-              Selecciona un estudiante.
-            </mat-error>
-          </mat-form-field>
-
-          <mat-form-field appearance="fill">
-            <mat-label>Curso</mat-label>
-            <mat-select formControlName="courseId" placeholder="Selecciona un curso">
-              <mat-option *ngFor="let course of courses" [value]="course.id">
-                {{ course.title }}
-              </mat-option>
-            </mat-select>
-            <mat-error *ngIf="enrollmentForm.get('courseId')?.hasError('required')">
-              Selecciona un curso.
-            </mat-error>
-          </mat-form-field>
-
-          <button mat-raised-button color="primary" type="submit" [disabled]="enrollmentForm.invalid">
-            Inscribirse
-          </button>
-        </form>
-
-        <p *ngIf="enrollmentSuccess" class="success-message">¡Inscripción exitosa!</p>
-      </div>
-    </div>
-  </ng-template>
-
-  <ng-template #noCoursesFound>
-    <p>No se encontraron cursos.</p>
-  </ng-template>
-</div> -->
+  }
+  <form [formGroup]="enrollmentForm" (click)="addEnrollment()">
+    <button mat-raised-button type="submit">Inscribirse</button>
+  </form>
+}
 

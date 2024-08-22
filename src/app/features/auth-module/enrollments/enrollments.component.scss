@@ -1,4 +1,4 @@
-// @import '../../../../scss/variables';
+@import '../../../../scss/variables';
 
 // .enrollments-container {
 //   display: flex;
@@ -43,53 +43,78 @@
 //   font-weight: bold;
 // }
 
-@import '../../../../scss/variables';
 
-.enrollments-container {
+// Estilos generales para el componente de inscripciones
+.enrollment-form {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
   background-color: $secondary-color;
-  opacity: $my-opacity;
-  border-radius: 10px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-h2 {
-  color: $primary-color;
-}
-
-p {
-  margin: 10px 0;
-  text-align: center;
-}
-
-button {
-  margin-top: 20px;
-}
-
-.loading {
-  display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  height: 100%;
-  text-align: center;
+  border-radius: 10px;
+  padding: 2%;
+  margin: 2% 0;
+  box-shadow: $deeper-card;
+  opacity: $my-opacity;
+  max-width: 100%;
+  box-sizing: border-box;
 
-  mat-spinner {
-    margin-bottom: 10px;
+  .col-6 {
+    flex: 1;
+    min-width: 240px;
+  }
+
+  button {
+    text-align: center;
   }
 }
 
-.success-message {
-  margin-top: 20px;
-  color: green;
-  font-weight: bold;
+.header-title {
+  font-family: $primary-title-font;
+  font-weight: 600;
+  color: $primary-color;
+  text-shadow: $deeper-text;
+  margin-bottom: 2vh;
+  font-size: 2.5rem;
+  text-align: center;
 }
 
-.error-message {
-  margin: 20px 0;
-  color: red;
-  font-weight: bold;
+.divider {
+  margin: 0 auto 5vh;
+  width: 100%;
+  border: none;
+  height: 2px;
+  background-color: antiquewhite;
+}
+
+.expansion-panels {
+  margin-top: 5vh;
+  gap: 5%;
+  max-width: 100%;
+  box-sizing: border-box;
+  
+  .mat-expansion-panel {
+    background-color: $secondary-color;
+    opacity: $my-opacity;
+    border-radius: 10px;
+    margin-bottom: 16px;
+
+    .mat-expansion-panel-header {
+      background-color: $primary-color;
+      font-size: large;
+      padding: 25px;
+      border-radius: 8px 8px 0 0;
+    }
+
+    .mat-panel-title {
+      font-weight: 500;
+      text-shadow: $deeper-text;
+    }
+
+    .mat-list-item {
+      padding: 8px 16px;
+      &:nth-child(even) {
+        background-color: $secondary-color;
+      }
+    }
+  }
 }

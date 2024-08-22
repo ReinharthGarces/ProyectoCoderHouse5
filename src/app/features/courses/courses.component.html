@@ -10,7 +10,7 @@
           </ul>
         </div>
         <div class="button-container animate__animated animate__slideInDown">
-        <button mat-raised-button [routerLink]="['/enrollments', course.id]"> Inscribirse</button>
+        <button mat-raised-button [routerLink]="['/enrollments', course.id]">{{ getButtonText() }}</button>
         </div>
       </ng-template>
     </mat-tab>
